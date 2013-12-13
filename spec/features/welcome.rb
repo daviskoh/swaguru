@@ -4,7 +4,9 @@ describe 'a user is given the option to signup or login', js: true do
   it 'allows users to choose between signup or login' do 
     visit '/'
 
-    (1..2).each { |n| page.html.should include("<div class='container#{n}'></div>") }
+    (1..2).each do |n|
+      page.html.should include("<div class='container#{n}'></div>")
+    end
 
     within 'div.container1' do 
       click_button 'Sign Up'
