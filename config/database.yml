@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: swaguru_development
+  pool: 5
+  username: daviskoh
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: swaguru_test
+  pool: 5
+  username: daviskoh
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: swaguru_production
+  pool: 5
+  username: daviskoh
+  password:
