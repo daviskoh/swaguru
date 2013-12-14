@@ -12,5 +12,9 @@ describe 'a user can create an account', js: true do
 
       click_button "Sign Up"
     end
+
+    within "form.sign-in" do
+      expect(page).to have_content "Created new account!"
+    end
   end
 end
