@@ -8,6 +8,8 @@ group :development, :test do
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'ffaker'
 end
 
 group :test do
