@@ -6,6 +6,7 @@ ruby '2.0.0'
 group :development, :test do
   gem 'jasmine-core', github: 'pivotal/jasmine'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
+  gem 'sinon-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'

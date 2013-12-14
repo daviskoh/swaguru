@@ -15,6 +15,7 @@
 //= require foundation
 //= require turbolinks
 //= require underscore
+//= require sinon
 //= require backbone
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
@@ -23,3 +24,5 @@
 //= require_tree ./backbone/routers
 
 $(function(){ $(document).foundation(); });
+
+new Router();
