@@ -81,6 +81,9 @@ GEM
       railties (>= 3.0.0)
     ffaker (1.22.1)
     ffi (1.9.3)
+    foundation-rails (5.0.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -207,6 +210,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   ffaker
+  foundation-rails
   jasmine!
   jasmine-core!
   jbuilder (~> 1.2)

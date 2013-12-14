@@ -33,8 +33,7 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 # CSS Framework
-#TODO uncomment foundation
-# gem 'foundation-rails'
+gem 'foundation-rails'
 # gem 'zurb-foundation'
 
 # Use SCSS for stylesheets
