@@ -26,3 +26,4 @@
 $(function(){ $(document).foundation(); });
 
 new Router();
+Backbone.history.start();
