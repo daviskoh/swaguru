@@ -23,7 +23,20 @@
 //= require_tree ./backbone/views
 //= require_tree ./backbone/routers
 
+// Foundation
 $(function(){ $(document).foundation(); });
+
+// Rails CSRF Protection
+$(document).ajaxSend(function (e, xhr, options) {
+  var token = $("meta[name='csrf-token']").attr("content");
+  xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+// Underscore.js Template Settings
+// _.templateSettings = {
+//     interpolate: /{{=(.+?)}}/g,
+//     evaluate: /{{(.+?)}}/g
+// };
 
 new Router();
 Backbone.history.start();

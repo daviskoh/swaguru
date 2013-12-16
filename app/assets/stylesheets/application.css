@@ -13,3 +13,5 @@
 
  *= require_tree .
  */
+
+input.error { border: 2px solid red; }
