@@ -1,5 +1,6 @@
 var WelcomeView = Backbone.View.extend({
-  tagName: 'ul',
+  tagName: 'div',
+  className: 'container1',
 
   events: {
     'click a#sign-up-button': 'goToSignUp',

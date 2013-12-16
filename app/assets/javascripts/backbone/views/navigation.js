@@ -5,13 +5,17 @@ var NavigationView = Backbone.View.extend({
   events: {
     'click a#home-nav': 'goToHome',
     'click a#sign-up-nav': 'goToSignUp',
-    'click a#sign-in-nav': 'goToSignIn'
+    'click a#sign-in-nav': 'goToSignIn',
+    'click a#sign-out-nav': 'signOut'
   },
 
   template: _.template($("script.navigation[type='text/html']").html()),
 
-  initialize: function() {
+  initialize: function(opts) {
     console.log('NavigationView initialized');
+
+    this.session = opts.session;
+
     this.render();
     return this;
   },
@@ -23,12 +27,44 @@ var NavigationView = Backbone.View.extend({
 
   goToSignUp: function(e) {
     e.preventDefault();
-    Backbone.history.navigate('users/new', {trigger: true})
+    Backbone.history.navigate('users/new', {trigger: true});
   },
 
   goToSignIn: function(e) {
     e.preventDefault();
-    Backbone.history.navigate('session/new', {trigger: true})
+    Backbone.history.navigate('session/new', {trigger: true});
+  },
+
+  signOut: function(e) {
+    e.preventDefault();
+
+    // this.session.fetch({
+    //   error: function(model, resp) {
+    //     console.log('failed session.fetch resp: %s', resp);
+    //   }
+    // });
+
+    // this.session.destroy({
+    //   success: function(model, resp) {
+    //     console.log('session destroy Succcess');
+    //     console.log(model, resp);
+    //   },
+    //   error: function(model, resp) {
+    //     console.log('session destroy Error');
+    //     console.log(model, resp);
+    //   }
+    // });
+
+    // destroy session using generic jquery ajax
+    $.ajax({
+      url: "/session",
+      type: "POST",
+      dataType: "json",
+      data: {"_method": "delete"},
+      context: this
+    });
+
+    Backbone.history.navigate('session/new', {trigger: true});
   },
 
   render: function() {

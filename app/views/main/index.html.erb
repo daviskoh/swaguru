@@ -9,6 +9,7 @@ put conditional rendering of nav items using javascript -->
           <li><a href="" id='home-nav'>Home</a></li>
           <li><a href="" id='sign-up-nav'>Sign Up</a></li>
           <li><a href="" id='sign-in-nav'>Sign In</a></li>
+          <li><a href="" id='sign-out-nav'>Sign Out</a></li>
         </ul>
       </section>
     </nav>
@@ -32,30 +33,75 @@ put conditional rendering of nav items using javascript -->
 
 <!-- #Sign Up User Form  ######################################################### -->
 <script type='text/html' class='sign-up-form'>
-  <fieldset>
-    <input type="text" name="name" placeholder='Name'>
-    <input type="email" name='email' placeholder='Email'>
-    <input type="password" name='password' placeholder='Password'>
-    <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
+  <form class='new-user'>
+    <fieldset>
+      <input type="text" name="name" placeholder='Name'>
+      <input type="email" name='email' placeholder='Email'>
+      <input type="password" name='password' placeholder='Password'>
+      <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
 
-    <select name="gender" id="" placeholder='Gender'>
-      <option value="">Select Gender</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-    <button>Sign Up</button>
-  </fieldset>
+      <select name="gender" id="" placeholder='Gender'>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <button>Sign Up</button>
+    </fieldset>
+  </form>
 </script>
 
 <!-- #Sign In User Form  ###########################################################  -->
 <script type='text/html' class='sign-in-form'>
-  <fieldset>
-    <input type="email" name='email' placeholder='Email'>
-    <input type="password" name='password' placeholder='Password'>
-    <button>Sign In</button>
-  </fieldset>
+  <form class='sign-in'>
+    <fieldset>
+      <input type="email" name='email' placeholder='Email'>
+      <input type="password" name='password' placeholder='Password'>
+      <button>Sign In</button>
+    </fieldset>
+  </form>
 </script>
 
-<!-- Ship only 2 container divs when user visits app for 1st time -->
-<div class='container1'></div>
-<div class='container2'></div>
+<!-- #Show User Page ########################################################### -->
+<script type='text/html' class='user-show-page'>
+  // Show User Page top
+  // NOTES
+  //   img tag for photo  
+  //   name render
+  <div class='container1'>
+    // photo 
+    <div id='profile-photo'>
+      <a href="" class='th' href=''>
+        <img src="" alt="">
+      </a>
+    </div>
+
+    // name display
+    <div id='profile-name'>
+      <p>NAME</p>
+    </div>
+
+    // social statistics
+    <div id='stats'>
+      <ul class='button-group'>
+        <li><a href="#" class='button'>Style Points</a></li>
+        <li><a href="#" class='button'>Followers</a></li>
+        <li><a href="#" class='button'>Following</a></li>
+      </ul>
+    </div>
+
+    // post pic / blog
+    // NOTE: render this ONLY when current_user === user.find(session[:user_id])
+    <div id='user-actions'>
+      <ul class='button-group'>
+        <li><a href="#" class="button">Picture New</a></li>
+        <li><a href="#" class="button">Blog New</a></li>
+      </ul>
+    </div>
+  </div>
+
+  // Show User Page bottom
+  <div class='container2'>
+    <ul class='user-show-content'></ul>
+  </div>
+</script>
+

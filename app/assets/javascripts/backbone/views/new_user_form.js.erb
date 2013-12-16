@@ -1,6 +1,6 @@
 var NewUserFormView = Backbone.View.extend({
-  tagName: 'form',
-  classname: 'new-user',
+  tagName: 'div',
+  className: 'container1',
 
   events: {
     'submit': 'createUser'
@@ -57,14 +57,18 @@ var NewUserFormView = Backbone.View.extend({
         self.$el.data('user-created', true);
         // document.location.href = '/';
         console.log(resp);
+
+        Backbone.history.navigate('session/new', {trigger: true});
       },
       error: function(model, resp, opts) {
         console.log('error');
+
         self.$el.find('input').removeClass('error');
         var errors = JSON.parse(resp.responseText).errors;
         _.each(errors, function(value, key) {
           self.$el.find("input=[name=" + key + "]").addClass('error');
         });
+
         self.submitButton.removeClass('disabled');
       }
     });
@@ -72,8 +76,6 @@ var NewUserFormView = Backbone.View.extend({
     console.log('name: %s, email: %s, password: %s, password-confirm: %s, gender: %s', this.name, this.email, this.password, this.passwordConfirmation, this.gender);
 
     this.el.reset();
-
-    Backbone.history.navigate('session/new', {trigger: true});
 
     return (this.$el.data('user-created') === true);
   },

@@ -6,36 +6,38 @@ var Router = Backbone.Router.extend({
     'users/:id': 'userShow'
   },
 
-  initialize: function() {
+  initialize: function(opts) {
     console.log("Router created");
+
+    this.session = opts.session;
     // instantiate navigation view once (when router create)
-    var navigation = new NavigationView();
+    var navigation = new NavigationView({session: this.session});
     $('body').append(navigation.el);
   },
 
   welcome: function() {
-    this.loadView(1, new WelcomeView());
+    this.loadView(new WelcomeView());
   },
 
   usersNew: function() {
     console.log('users/new route hit');
-    this.loadView(1, new NewUserFormView());
+    this.loadView(new NewUserFormView());
   },
 
   sessionNew: function() {
     console.log('sessions/new route hit');
-    this.loadView(1, new SignInFormView());
+    this.loadView(new SignInFormView({session: this.session}));
   },
 
   userShow: function(id) {
-    console.log('users/' + id);
-    
+    console.log('users/%s route hit', id);
+    this.loadView(new UserShowView);
   },
 
-  loadView: function(containerNumber, view) {
+  loadView: function(view) {
     this.main && this.main.remove();
     this.main = view;
-    console.log('this.main: %s', this.main);
-    $('div.container' + containerNumber).append(view.el);
+    // console.log('this.main: %s', this.main);
+    $('body').append(view.el);
   }
 });

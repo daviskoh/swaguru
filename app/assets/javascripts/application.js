@@ -28,7 +28,7 @@ $(function(){
   console.log($(document));
   $(document).foundation();
 
-  new Router();
+  new Router({session: new Session()});
   Backbone.history.start({pushState: true});
 });
 
