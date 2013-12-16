@@ -27,9 +27,9 @@ var Router = Backbone.Router.extend({
     this.loadView(1, new SignInFormView());
   },
 
-  userShow: function() {
-    // track user id after sign in
-    console.log('users/' + '');
+  userShow: function(id) {
+    console.log('users/' + id);
+    
   },
 
   loadView: function(containerNumber, view) {
