@@ -11,6 +11,7 @@ var WelcomeView = Backbone.View.extend({
   initialize: function() {
     console.log('WelcomeView initialized');
     this.render();
+    return this;
   },
 
   goToSignUp: function(e) {
@@ -20,9 +21,9 @@ var WelcomeView = Backbone.View.extend({
   },
 
   goToSignIn: function(e) {
-    console.log('going to /sessions/new');
+    console.log('going to /session/new');
     e.preventDefault();
-    Backbone.history.navigate( 'sessions/new', {trigger: true});
+    Backbone.history.navigate( 'session/new', {trigger: true});
   },
 
   render: function() {

@@ -12,6 +12,7 @@ var NewUserFormView = Backbone.View.extend({
     console.log('UserFormView initialized');
     this.submitButton = this.$el.find("input[type='submit']");
     this.render();
+    return this;
   },
 
   attributes: function() {

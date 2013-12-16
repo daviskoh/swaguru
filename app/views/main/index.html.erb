@@ -1,3 +1,19 @@
+<!-- #Navigation    ##########################################################-->
+<!-- <div class="fixed"></div> -->
+<!-- <%% embedded javascript %>
+put conditional rendering of nav items using javascript -->
+<script type='text/html' class='navigation'>
+    <nav class="top-bar">
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a href="" id='home-nav'>Home</a></li>
+          <li><a href="" id='sign-up-nav'>Sign Up</a></li>
+          <li><a href="" id='sign-in-nav'>Sign In</a></li>
+        </ul>
+      </section>
+    </nav>
+</script>
+
 <!-- #Welcome page    ##########################################################-->
 <script type='text/html' class='welcome'>
   <div class='rows'>
@@ -27,8 +43,8 @@
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
-  </fieldset>  
-  <button>Sign Up</button>
+    <button>Sign Up</button>
+  </fieldset>
 </script>
 
 <!-- #Sign In User Form  ###########################################################  -->
@@ -41,6 +57,5 @@
 </script>
 
 <!-- Ship only 2 container divs when user visits app for 1st time -->
-<% [1,2].each do |n| %>
-  <div class='container<%= n %>'></div>
-<% end %>
+<div class='container1'></div>
+<div class='container2'></div>

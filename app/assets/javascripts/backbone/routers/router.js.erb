@@ -2,11 +2,15 @@ var Router = Backbone.Router.extend({
   routes: {
     '': 'welcome',
     'users/new': 'usersNew',
-    'session/new': 'sessionNew'
+    'session/new': 'sessionNew',
+    'users/:id': 'userShow'
   },
 
   initialize: function() {
     console.log("Router created");
+    // instantiate navigation view once (when router create)
+    var navigation = new NavigationView();
+    $('body').append(navigation.el);
   },
 
   welcome: function() {
@@ -23,9 +27,15 @@ var Router = Backbone.Router.extend({
     this.loadView(1, new SignInFormView());
   },
 
+  userShow: function() {
+    // track user id after sign in
+    console.log('users/' + '');
+  },
+
   loadView: function(containerNumber, view) {
     this.main && this.main.remove();
     this.main = view;
+    console.log('this.main: %s', this.main);
     $('div.container' + containerNumber).append(view.el);
   }
 });

@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+// require jquery_ujs
 //= require foundation
 //= require turbolinks
 //= require underscore
-//= require sinon
+// require sinon
 //= require backbone
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
@@ -24,7 +24,13 @@
 //= require_tree ./backbone/routers
 
 // Foundation
-$(function(){ $(document).foundation(); });
+$(function(){
+  console.log($(document));
+  $(document).foundation();
+
+  new Router();
+  Backbone.history.start({pushState: true});
+});
 
 // Rails CSRF Protection
 $(document).ajaxSend(function (e, xhr, options) {
@@ -32,11 +38,4 @@ $(document).ajaxSend(function (e, xhr, options) {
   xhr.setRequestHeader("X-CSRF-Token", token);
 });
 
-// Underscore.js Template Settings
-// _.templateSettings = {
-//     interpolate: /{{=(.+?)}}/g,
-//     evaluate: /{{(.+?)}}/g
-// };
 
-new Router();
-Backbone.history.start();
