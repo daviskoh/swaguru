@@ -1,0 +1,56 @@
+var SignInFormView = Backbone.View.extend({
+  tagName: 'form',
+  className: 'sign-in',
+
+  events: {
+    'submit': 'login'
+  },
+
+  template: _.template($("script.sign-in-form[type='text/html']").html()),
+
+  initialize: function() {
+    console.log('SignInFormView instantiated');
+    this.render();
+  },
+
+  attributes: function(){
+    return {
+      email: this.email,
+      password: this.password
+    }
+  },
+
+  login: function(e) {
+    e.preventDefault();
+
+    this.email = this.$el.find("input[name='email']").val();
+    this.password = this.$el.find("input[name='password']").val();
+
+    var self = this;
+    var session = new Session(this.attributes());
+    session.save(null, {
+      success: function(model, resp) {
+        console.log('session create Success callback');
+        console.log('session_id: ' + resp);
+
+        self.sessionID = resp;
+      },
+      error: function(model, resp, opts) {
+        console.log('session create Error callback');
+        // console.log('model: ' + model);
+        console.log('resp: ' + resp.responseJSON.text); //how to extract JSON
+
+        response = resp;
+      }
+    });
+
+    console.log('email: %s, password: %s', this.email, this.password);
+    this.el.reset();
+
+    Backbone.history.navigate('users/' + this.sessionID, {trigger: true});
+  },
+
+  render: function() {
+    this.$el.html(this.template());
+  },
+});

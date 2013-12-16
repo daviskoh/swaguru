@@ -1,4 +1,4 @@
-<!-- #Welcome page                                                      -->
+<!-- #Welcome page    ##########################################################-->
 <script type='text/html' class='welcome'>
   <div class='rows'>
     <div class='large-8 columns'>
@@ -8,14 +8,14 @@
 
   <div class='rows'>
     <div class='large-4 columns'>
-      <a href="#" class='large button' id='sign-up'>Sign Up</a>
-      <a href="#" class='large button' id='sign-in'>Sign In</a>
+      <a href="#" class='large button' id='sign-up-button'>Sign Up</a>
+      <a href="#" class='large button' id='sign-in-button'>Sign In</a>
     </div>
   </div>  
 </script>
 
-<!-- #User Form                                                           -->
-<script type='text/html' class='user-form'>
+<!-- #Sign Up User Form  ######################################################### -->
+<script type='text/html' class='sign-up-form'>
   <fieldset>
     <input type="text" name="name" placeholder='Name'>
     <input type="email" name='email' placeholder='Email'>
@@ -29,6 +29,15 @@
     </select>
   </fieldset>  
   <button>Sign Up</button>
+</script>
+
+<!-- #Sign In User Form  ###########################################################  -->
+<script type='text/html' class='sign-in-form'>
+  <fieldset>
+    <input type="email" name='email' placeholder='Email'>
+    <input type="password" name='password' placeholder='Password'>
+    <button>Sign In</button>
+  </fieldset>
 </script>
 
 <!-- Ship only 2 container divs when user visits app for 1st time -->

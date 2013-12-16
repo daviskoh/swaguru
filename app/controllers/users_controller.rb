@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   def create
     # binding.pry
     #TODO change to user_params, NOT passing through PASSWORD
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], gender: params[:gender])
+    user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], gender: params[:gender])
  
-    if @user.save
-      render json: @user
+    if user.save
+      render json: user, status: 200
     else
-      render json: @user.errors#, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
   end 
 

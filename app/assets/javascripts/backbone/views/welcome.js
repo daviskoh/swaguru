@@ -2,8 +2,8 @@ var WelcomeView = Backbone.View.extend({
   tagName: 'ul',
 
   events: {
-    'click a#sign-up': 'goToSignUp',
-    'click a#sign-in': 'goToSignIn'
+    'click a#sign-up-button': 'goToSignUp',
+    'click a#sign-in-button': 'goToSignIn'
   },
 
   template: _.template($("script.welcome[type='text/html']").html()),

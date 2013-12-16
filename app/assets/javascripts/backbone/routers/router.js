@@ -2,7 +2,7 @@ var Router = Backbone.Router.extend({
   routes: {
     '': 'welcome',
     'users/new': 'usersNew',
-    'sessions/new': 'sessionsNew'
+    'session/new': 'sessionNew'
   },
 
   initialize: function() {
@@ -15,12 +15,12 @@ var Router = Backbone.Router.extend({
 
   usersNew: function() {
     console.log('users/new route hit');
-    this.loadView(1, new newUserFormView());
+    this.loadView(1, new NewUserFormView());
   },
 
-  sessionsNew: function() {
+  sessionNew: function() {
     console.log('sessions/new route hit');
-    // setup login view
+    this.loadView(1, new SignInFormView());
   },
 
   loadView: function(containerNumber, view) {

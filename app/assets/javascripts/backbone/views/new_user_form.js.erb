@@ -1,4 +1,4 @@
-var newUserFormView = Backbone.View.extend({
+var NewUserFormView = Backbone.View.extend({
   tagName: 'form',
   classname: 'new-user',
 
@@ -6,7 +6,7 @@ var newUserFormView = Backbone.View.extend({
     'submit': 'createUser'
   },
 
-  template: _.template($("script.user-form[type='text/html']").html()),
+  template: _.template($("script.sign-up-form[type='text/html']").html()),
 
   initialize: function() {
     console.log('UserFormView initialized');
@@ -36,7 +36,7 @@ var newUserFormView = Backbone.View.extend({
       this.submitButton.addClass('disabled');
     }
 
-    // user input
+    // user input /////////////////////////////////////////////////////////////////////////
     this.name = this.$el.find("input[name='name']").val();
     this.email = this.$el.find("input[name='email']").val();
     this.password = this.$el.find("input[name='password']").val();
@@ -48,31 +48,31 @@ var newUserFormView = Backbone.View.extend({
     // instantiate new user w/ attributes from user inputs
     var user = new User(this.attributes());
     console.log("new User instantiated");
-    // save (create new) user w/ attributes specified above
+    // save (create new) user w/ attributes specified above //////////////////////////////
     user.save(null, {
-      success: function(model, response) {
+      success: function(model, resp) {
         console.log('user save success callback');
 
         self.$el.data('user-created', true);
         // document.location.href = '/';
-        console.log(response);
-      }//,
-      // error: function(originalModel, resp, opts) {
-      //   console.log('error');
-      //   self.$el.find('input').removeClass('error');
-      //   var errors = JSON.parse(resp.responseText).errors;
-      //   _.each(errors, function(value, key) {
-      //     self.$el.find("input=[name=" + key + "]").addClass('error');
-      //   });
-      //   self.submitButton.removeClass('disabled');
-      // }
+        console.log(resp);
+      },
+      error: function(model, resp, opts) {
+        console.log('error');
+        self.$el.find('input').removeClass('error');
+        var errors = JSON.parse(resp.responseText).errors;
+        _.each(errors, function(value, key) {
+          self.$el.find("input=[name=" + key + "]").addClass('error');
+        });
+        self.submitButton.removeClass('disabled');
+      }
     });
 
     console.log('name: %s, email: %s, password: %s, password-confirm: %s, gender: %s', this.name, this.email, this.password, this.passwordConfirmation, this.gender);
 
     this.el.reset();
 
-    Backbone.history.navigate('sessions/new');
+    Backbone.history.navigate('session/new', {trigger: true});
 
     return (this.$el.data('user-created') === true);
   },
