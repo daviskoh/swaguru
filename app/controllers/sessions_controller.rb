@@ -22,8 +22,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     session[:user_id] = nil
-    # binding.pry
     render text: 'must DESTROY', status: 200
   end
 end

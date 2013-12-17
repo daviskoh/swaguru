@@ -45,38 +45,20 @@ var NavigationView = Backbone.View.extend({
   signOut: function(e) {
     e.preventDefault();
 
-    // this.session.fetch({
-    //   error: function(model, resp) {
-    //     console.log('failed session.fetch resp: %s', resp);
-    //   }
-    // });
-
-    // this.session.destroy({
-    //   success: function(model, resp) {
-    //     console.log('session destroy Succcess');
-    //     console.log(model, resp);
-    //   },
-    //   error: function(model, resp) {
-    //     console.log('session destroy Error');
-    //     console.log(model, resp);
-    //   }
-    // });
-
-    // destroy session using generic jquery ajax
-    // console.log(this.session.get('url'));
-
-    // hard set session id before .destroy()
-
+    // HARD SET ID before .destroy()
+    // this.session.destroy()
+    this.session.set('id', sessionID);
     this.session.destroy();
-    $.ajax({
-      url: "/session",
-      type: "POST",
-      dataType: "json",
-      data: {"_method": "delete"},
-      context: this
-    });
 
-    // Backbone.history.navigate('session/new', {trigger: true});
+    // $.ajax({
+    //   url: "/session",
+    //   type: "POST",
+    //   dataType: "json",
+    //   data: {"_method": "delete"},
+    //   context: this
+    // });
+
+    Backbone.history.navigate('session/new', {trigger: true});
   },
 
   render: function() {
