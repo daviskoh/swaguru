@@ -12,6 +12,7 @@ var SignInFormView = Backbone.View.extend({
     console.log('SignInFormView instantiated');
 
     this.session = opts.session;
+    this.user = opts.user;
 
     this.render();
     return this;
@@ -38,7 +39,11 @@ var SignInFormView = Backbone.View.extend({
         console.log('session create Success callback');
         console.log('session_id: ' + resp);
 
-        console.log(self.session.get('id'));
+        // set global var to be used for nav menu render ONLY
+        loggedIn = true; //////////
+        sessionID = resp; /////////
+
+        // self.user.set('url', 'users/:id');
 
         Backbone.history.navigate('users/' + resp, {trigger: true});
       },

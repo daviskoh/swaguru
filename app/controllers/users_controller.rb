@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   respond_to :json#, :html
 
+  def show
+    # binding.pry
+    render json: @user, status: 200
+  end
+
   def create
     binding.pry
     #TODO change to user_params, NOT passing through PASSWORD
@@ -22,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
+    # binding.pry
     @user = User.find(params[:id])
   end
 

@@ -8,8 +8,11 @@ var NewUserFormView = Backbone.View.extend({
 
   template: _.template($("script.sign-up-form[type='text/html']").html()),
 
-  initialize: function() {
+  initialize: function(opts) {
     console.log('UserFormView initialized');
+
+    this.user = opts.user;
+
     this.submitButton = this.$el.find("input[type='submit']");
     this.render();
     return this;
@@ -47,10 +50,12 @@ var NewUserFormView = Backbone.View.extend({
     // define context to be used in below user.save() method
     var self = this;
     // instantiate new user w/ attributes from user inputs
-    var user = new User(this.attributes());
+    // var user = new User(this.attributes());
+
     console.log("new User instantiated");
     // save (create new) user w/ attributes specified above //////////////////////////////
-    user.save(null, {
+    // user.save(null, {
+    this.user.save(null, {
       success: function(model, resp) {
         console.log('user save success callback');
 

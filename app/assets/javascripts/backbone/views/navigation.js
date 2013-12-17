@@ -4,6 +4,7 @@ var NavigationView = Backbone.View.extend({
 
   events: {
     'click a#home-nav': 'goToHome',
+    'click a#user-show-nav': 'profile',
     'click a#sign-up-nav': 'goToSignUp',
     'click a#sign-in-nav': 'goToSignIn',
     'click a#sign-out-nav': 'signOut'
@@ -20,9 +21,15 @@ var NavigationView = Backbone.View.extend({
     return this;
   },
 
-  goToHome: function(e){
+  goToHome: function(e) { 
     e.preventDefault();
     Backbone.history.navigate('', {trigger: true});
+  },
+
+  profile: function(e) {
+    e.preventDefault();
+
+    Backbone.history.navigate('users/' + sessionID, {trigger: true});
   },
 
   goToSignUp: function(e) {
@@ -56,6 +63,11 @@ var NavigationView = Backbone.View.extend({
     // });
 
     // destroy session using generic jquery ajax
+    // console.log(this.session.get('url'));
+
+    // hard set session id before .destroy()
+
+    this.session.destroy();
     $.ajax({
       url: "/session",
       type: "POST",
@@ -64,7 +76,7 @@ var NavigationView = Backbone.View.extend({
       context: this
     });
 
-    Backbone.history.navigate('session/new', {trigger: true});
+    // Backbone.history.navigate('session/new', {trigger: true});
   },
 
   render: function() {

@@ -10,6 +10,7 @@ var Router = Backbone.Router.extend({
     console.log("Router created");
 
     this.session = opts.session;
+    this.user = opts.user;
     // instantiate navigation view once (when router create)
     var navigation = new NavigationView({session: this.session});
     $('body').append(navigation.el);
@@ -21,16 +22,41 @@ var Router = Backbone.Router.extend({
 
   usersNew: function() {
     console.log('users/new route hit');
-    this.loadView(new NewUserFormView());
+    this.loadView(new NewUserFormView({user: this.user}));
   },
 
   sessionNew: function() {
     console.log('sessions/new route hit');
-    this.loadView(new SignInFormView({session: this.session}));
+    this.loadView(new SignInFormView({session: this.session, user: this.user}));
   },
 
   userShow: function(id) {
     console.log('users/%s route hit', id);
+
+    console.log('current user url: %s', this.user.get('url'));
+    
+    var self = this;
+    console.log(self.user);
+
+    $.ajax({
+      url: "/users/" + id,
+      type: "GET",
+      dataType: "json",
+      success: function(userJSON) {
+        console.log('user show GET success');
+
+        self.user.set(userJSON);
+        // currentUser = self.user;
+        // response = self.user.extend(userJSON);
+
+        response = arguments;
+      },
+      context: this
+    });
+
+    console.log(this.user);
+    // NOWNOWNOWNOWNOWNOW
+    // populate this.user w/ user model w/ resp for rendering in usershowview
     this.loadView(new UserShowView);
   },
 

@@ -25,10 +25,10 @@
 
 // Foundation
 $(function(){
-  console.log($(document));
+  
   $(document).foundation();
 
-  new Router({session: new Session()});
+  new Router({session: new Session(), user: new User()});
   Backbone.history.start({pushState: true});
 });
 
