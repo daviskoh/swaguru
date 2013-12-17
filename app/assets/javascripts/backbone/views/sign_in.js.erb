@@ -34,7 +34,7 @@ var SignInFormView = Backbone.View.extend({
     var self = this;
     // var session = new Session(this.attributes());
     // null
-    if (this.session) {
+    this.session = new Session();
       this.session.save(this.attributes(), {
         success: function(model, resp) {
           console.log('session create Success callback');
@@ -59,16 +59,6 @@ var SignInFormView = Backbone.View.extend({
           response = resp;
         }
       });
-    } else {
-      this.session.fetch({
-        success: function(){
-          console.log('successfully this.session.fetch()');
-        },
-        error: function(){
-          console.log('ERROR this.session.fetch()');
-        }
-      });
-    }
 
     console.log('email: %s, password: %s', this.email, this.password);
     // this.$el.find("form").reset();
