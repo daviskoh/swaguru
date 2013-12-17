@@ -1,12 +1,21 @@
 class SessionsController < ApplicationController
+  # def index
+  #   binding.pry
+  #   render json: session[:user_id]
+  # end
+
   def create
+    # return if session[:user_id]
+
+    # binding.pry
+    
     # authenticate that user/pass combo is legit
     user = User.find_by(email: params[:email])
     # binding.pry
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      
+      # binding.pry
       # going to return an integer
       render json: session[:user_id], status: 200
     else

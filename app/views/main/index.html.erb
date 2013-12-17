@@ -64,24 +64,25 @@ put conditional rendering of nav items using javascript -->
 
 <!-- #Show User Page ########################################################### -->
 <script type='text/html' class='user-show-page'>
-  // Show User Page top
-  // NOTES
-  //   img tag for photo  
-  //   name render
   <div class='container1'>
-    // photo 
     <div id='profile-photo'>
-      <a href="" class='th' href=''>
-        <img src="" alt="">
-      </a>
+      <%% if (this.model.get('profile_photo_file_name') != null) { %>
+        <a href="" class='th'>
+          <img src="" alt="">
+        </a>
+      <%% } else { %>
+        <a href="" class='th'>
+          <img src='http://placekitten.com/200/300' alt=''>
+        </a>
+      <%% } %>
     </div>
 
-    // name display
     <div id='profile-name'>
-      <p>NAME</p>
+      <p>
+        <%%= this.model.get('name') %>
+      </p>
     </div>
 
-    // social statistics
     <div id='stats'>
       <ul class='button-group'>
         <li><a href="#" class='button'>Style Points</a></li>
@@ -90,8 +91,7 @@ put conditional rendering of nav items using javascript -->
       </ul>
     </div>
 
-    // post pic / blog
-    // NOTE: render this ONLY when current_user === user.find(session[:user_id])
+    <!-- NOTE: render this ONLY when current_user === user.find(session[:user_id]) -->
     <div id='user-actions'>
       <ul class='button-group'>
         <li><a href="#" class="button">Picture New</a></li>
@@ -100,7 +100,6 @@ put conditional rendering of nav items using javascript -->
     </div>
   </div>
 
-  // Show User Page bottom
   <div class='container2'>
     <ul class='user-show-content'></ul>
   </div>

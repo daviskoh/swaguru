@@ -47,7 +47,7 @@ var NavigationView = Backbone.View.extend({
   signOut: function(e) {
     e.preventDefault();
 
-    if (sessionID != null) {
+    // if (sessionID != null) {
       console.log('session destroyed');
 
       // HARD SET ID before .destroy()
@@ -56,7 +56,7 @@ var NavigationView = Backbone.View.extend({
 
       sessionID = null;
       Backbone.history.navigate('session/new', {trigger: true});
-    }
+    // }
   },
 
   render: function() {

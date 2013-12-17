@@ -11,6 +11,21 @@ var Router = Backbone.Router.extend({
 
     this.session = opts.session;
     this.user = opts.user;
+
+    // $.ajax({
+    //   url: "session",
+    //   type: "GET",
+    //   dataType: "json",
+    //   success: function(sessionJSON) {
+    //     console.log('retrieved session id');
+
+    //     sessionID = sessionJSON;
+
+    //     response = arguments;
+    //   },
+    //   context: this
+    // });
+
     // instantiate navigation view once (when router create)
     var navigation = new NavigationView({session: this.session});
     $('body').append(navigation.el);
@@ -36,7 +51,7 @@ var Router = Backbone.Router.extend({
     console.log('current user url: %s', this.user.get('url'));
     
     var self = this;
-    console.log(self.user);
+    // console.log(self.user);
 
     // self.user.set('id', id);
 
@@ -59,14 +74,14 @@ var Router = Backbone.Router.extend({
         self.user.set(userJSON);
 
         response = arguments;
+
+        // populate this.user w/ user model w/ resp for rendering in usershowview
+        this.loadView(new UserShowView({model: this.user}));
       },
       context: this
     });
 
-    console.log(this.user);
-    // NOWNOWNOWNOWNOWNOW
-    // populate this.user w/ user model w/ resp for rendering in usershowview
-    this.loadView(new UserShowView);
+    // console.log(this.user);
   },
 
   loadView: function(view) {
