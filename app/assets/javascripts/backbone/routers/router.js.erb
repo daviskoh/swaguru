@@ -42,7 +42,7 @@ var Router = Backbone.Router.extend({
 
   sessionNew: function() {
     console.log('sessions/new route hit');
-    this.loadView(new SignInFormView({user: this.user}));
+    this.loadView(new SignInFormView({session: this.session, user: this.user}));
     // session: this.session, 
   },
 

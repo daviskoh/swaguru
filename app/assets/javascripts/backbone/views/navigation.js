@@ -54,6 +54,9 @@ var NavigationView = Backbone.View.extend({
       this.session.set('id', sessionID);
       this.session.destroy();
 
+      // change ID back to null to simulate !isNew()
+      this.session.set('id', null);
+
       sessionID = null;
       Backbone.history.navigate('session/new', {trigger: true});
     // }

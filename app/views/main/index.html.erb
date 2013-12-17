@@ -77,6 +77,10 @@ put conditional rendering of nav items using javascript -->
       <%% } %>
     </div>
 
+    <%% if (this.model.get('id') != sessionID) { %>
+      <input type='file' name='profile_photo' placeholder='Profile Photo'>
+    <%% } %>
+
     <div id='profile-name'>
       <p>
         <%%= this.model.get('name') %>

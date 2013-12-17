@@ -11,7 +11,7 @@ var SignInFormView = Backbone.View.extend({
   initialize: function(opts) {
     console.log('SignInFormView instantiated');
 
-    // this.session = opts.session;
+    this.session = opts.session;
     this.user = opts.user;
 
     this.render();
@@ -34,31 +34,32 @@ var SignInFormView = Backbone.View.extend({
     var self = this;
     // var session = new Session(this.attributes());
     // null
-    this.session = new Session();
-      this.session.save(this.attributes(), {
-        success: function(model, resp) {
-          console.log('session create Success callback');
-          console.log('session_id: ' + resp);
 
-          // set global var to be used for nav menu render ONLY
-          loggedIn = true; //////////
-          sessionID = resp; /////////
+    // this.session = new Session();
+    this.session.save(this.attributes(), {
+      success: function(model, resp) {
+        console.log('session create Success callback');
+        console.log('session_id: ' + resp);
 
-          // self.user.set('url', 'users/:id');
+        // set global var to be used for nav menu render ONLY
+        loggedIn = true; //////////
+        sessionID = resp; /////////
 
-          Backbone.history.navigate('users/' + resp, {trigger: true});
-        },
-        error: function(model, resp) {
-          console.log('session create Error callback');
-          // console.log('model: ' + model);
-          // console.log('resp: ' + resp.responseJSON.text); //how to extract JSON
-          // _.each(arguments, function(ele) {
-          //   console.log(ele);
-          // });
+        // self.user.set('url', 'users/:id');
 
-          response = resp;
-        }
-      });
+        Backbone.history.navigate('users/' + resp, {trigger: true});
+      },
+      error: function(model, resp) {
+        console.log('session create Error callback');
+        // console.log('model: ' + model);
+        // console.log('resp: ' + resp.responseJSON.text); //how to extract JSON
+        // _.each(arguments, function(ele) {
+        //   console.log(ele);
+        // });
+
+        response = resp;
+      }
+    });
 
     console.log('email: %s, password: %s', this.email, this.password);
     // this.$el.find("form").reset();
