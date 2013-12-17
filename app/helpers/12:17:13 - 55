@@ -1,0 +1,43 @@
+-------------------------Rails Optimization-------------------------
+
+IO - input / output
+
+n + 1 Query problem
+  rals & activerecord
+  IO problem
+
+ex
+  @posts = Post.all.includes(:author) #cache sql query
+  aka
+  SELET * FROM posts
+  SELECT * FROM authors where ID = foreign_key of post
+
+product mode
+  rails s -e production
+  for similuate non-relaod of app changes
+
+cache
+  move data to faster (higher rates of IO) IO location 
+  key / value system
+
+Rails.cache.fetch(params[:s], expires: 1.day) do 
+  #cache data
+end
+  expiration: value in key is valid until specified time in future
+
+Fragment Cache
+  in html.erb, <% cache do %><% end %>
+
+2 Cache Busting Strategies
+  time-based
+  key-based
+    if key changes, fetch new data
+    aka until params[:key] keep value
+
+Memcached
+  add-on to Heroku
+  allow to cache in memory store
+
+Content Delivery Network (CDN)
+  force browser to cache files & implement cache itself
+

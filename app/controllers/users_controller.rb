@@ -1,5 +1,6 @@
 class UsersController < ApplicationController  
   before_action :authenticated!, :set_user, :authorized!, except: [:create]
+  #TODO users can see other users' pages
 
   respond_to :json#, :html
 
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     #TODO change to user_params, NOT passing through PASSWORD
     user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], gender: params[:gender])
  
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   def authorized!
     unless @user.id == session[:user_id]
       # redirect_to user_path(session[:user_id])
-
+      render status: :unauthorized
     end
   end
 end 

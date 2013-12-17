@@ -1,9 +1,4 @@
 class SessionsController < ApplicationController
-  # def index
-  #   binding.pry
-  #   render json: session
-  # end
-
   def create
     # authenticate that user/pass combo is legit
     user = User.find_by(email: params[:email])
@@ -22,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    # binding.pry
     session[:user_id] = nil
     render text: 'must DESTROY', status: 200
   end

@@ -29,7 +29,9 @@ var NavigationView = Backbone.View.extend({
   profile: function(e) {
     e.preventDefault();
 
-    Backbone.history.navigate('users/' + sessionID, {trigger: true});
+    if (sessionID != null) {
+      Backbone.history.navigate('users/' + sessionID, {trigger: true});
+    }
   },
 
   goToSignUp: function(e) {
@@ -45,20 +47,16 @@ var NavigationView = Backbone.View.extend({
   signOut: function(e) {
     e.preventDefault();
 
-    // HARD SET ID before .destroy()
-    // this.session.destroy()
-    this.session.set('id', sessionID);
-    this.session.destroy();
+    if (sessionID != null) {
+      console.log('session destroyed');
 
-    // $.ajax({
-    //   url: "/session",
-    //   type: "POST",
-    //   dataType: "json",
-    //   data: {"_method": "delete"},
-    //   context: this
-    // });
+      // HARD SET ID before .destroy()
+      this.session.set('id', sessionID);
+      this.session.destroy();
 
-    Backbone.history.navigate('session/new', {trigger: true});
+      sessionID = null;
+      Backbone.history.navigate('session/new', {trigger: true});
+    }
   },
 
   render: function() {

@@ -5,7 +5,8 @@ module SessionsHelper
 
   def authenticated!
     unless logged_in?
-      redirect_to new_session_path
+      # redirect_to new_session_path
+      render status: :unauthorized
     end
   end
 

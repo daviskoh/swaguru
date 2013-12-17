@@ -38,6 +38,17 @@ var Router = Backbone.Router.extend({
     var self = this;
     console.log(self.user);
 
+    // self.user.set('id', id);
+
+    // self.user.fetch({
+    //   success: function() {
+    //     _.each(arguments, console.log);
+    //   },
+    //   error: function() {
+    //     _.each(arguments, console.log);
+    //   }
+    // });
+
     $.ajax({
       url: "/users/" + id,
       type: "GET",
@@ -46,8 +57,6 @@ var Router = Backbone.Router.extend({
         console.log('user show GET success');
 
         self.user.set(userJSON);
-        // currentUser = self.user;
-        // response = self.user.extend(userJSON);
 
         response = arguments;
       },
