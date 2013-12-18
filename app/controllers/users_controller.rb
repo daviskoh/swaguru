@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      binding.pry
+      # binding.pry
       # redirect_to user_path(@user)
       render json: @user.as_json(methods: :profile_photo_url), status: 200
     else

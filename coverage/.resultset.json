@@ -1,0 +1,22 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/daviskoh/dev/swaguru/app/models/user.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1387408069
+  }
+}

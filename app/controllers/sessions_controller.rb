@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   # end
 
   def create
+    #TODO update client-side Session model to overwrite toJSON
     # return if session[:user_id]
 
     # binding.pry

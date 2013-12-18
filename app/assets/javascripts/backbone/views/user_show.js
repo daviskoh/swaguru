@@ -21,10 +21,10 @@ var UserShowView = Backbone.View.extend({
 
   updateProfilePhoto: function() {
     console.log('show me whats inside maaaaaaane');
-    fileInput = $('#fileInput')[0];
+    var fileInput = $('#fileInput')[0];
     console.log(fileInput);
 
-    file = fileInput.files[0];
+    var file = fileInput.files[0];
     console.log('the image file: ');
     console.log(file);
 
@@ -48,14 +48,10 @@ var UserShowView = Backbone.View.extend({
 
           self.model.set('profile_photo', reader.result);
 
-          // console.log('profile_photo ', self.model.get('profile_photo'));
-
           // self.model.set('profile_photo_file_name', file.name);
           // self.model.set('profile_photo_content_type', file.type);
           // self.model.set('profile_photo_file_size', file.size);
           // self.model.set('profile_photo_updated_at', new Date());
-          
-          // html: { multipart: true }
 
           self.model.url = '/users/' + self.model.get('id');
 
