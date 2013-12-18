@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       # binding.pry
       # going to return an integer
-      render json: session[:user_id], status: 200
+      render json: session[:user_id], status: 201
     else
       # redirect_to new_session_path
       # binding.pry
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   def destroy
     # binding.pry
     session[:user_id] = nil
-    render text: 'must DESTROY', status: 200
+    render text: 'must DESTROY', status: 204
   end
 end

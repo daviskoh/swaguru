@@ -28,15 +28,14 @@ $(function(){
   
   $(document).foundation();
 
+  // Rails CSRF Protection
+  $(document).ajaxSend(function (e, xhr, options) {
+    var token = $("meta[name='csrf-token']").attr("content");
+    xhr.setRequestHeader("X-CSRF-Token", token);
+  });
+
   window.user = new User();
   new Router({session: new Session(), user: user});
   Backbone.history.start({pushState: true});
 });
-
-// Rails CSRF Protection
-$(document).ajaxSend(function (e, xhr, options) {
-  var token = $("meta[name='csrf-token']").attr("content");
-  xhr.setRequestHeader("X-CSRF-Token", token);
-});
-
 

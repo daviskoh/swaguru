@@ -5,14 +5,19 @@ class UsersController < ApplicationController
   respond_to :json#, :html
 
   def show
+    #TODO check if through backbone/js can make request for user info
     # binding.pry
-    render json: @user.as_json(methods: :profile_photo_url), status: 200
+    if @user.profile_photo
+      render json: @user.as_json(methods: :profile_photo_url), status: 201
+    else
+      render json: @user, status: 201
+    end
   end
 
   def create
     binding.pry
     #TODO change to user_params, NOT passing through PASSWORD
-    user = User.new(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation], gender: params[:gender])
+    user = User.new(user_params)
  
     if user.save
       render json: user, status: 200

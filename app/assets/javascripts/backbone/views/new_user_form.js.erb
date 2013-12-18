@@ -12,6 +12,7 @@ var NewUserFormView = Backbone.View.extend({
     console.log('UserFormView initialized');
 
     this.model = opts.model;
+    this.model.url = '/users';
 
     this.submitButton = this.$el.find("input[type='submit']");
     this.render();
@@ -51,6 +52,9 @@ var NewUserFormView = Backbone.View.extend({
     var self = this;
     // instantiate new user w/ attributes from user inputs
     // var user = new User(this.attributes());
+    console.log(this.model);
+    this.model.set('id', null);
+    this.model.set(this.attributes());
 
     console.log("new User instantiated");
     // save (create new) user w/ attributes specified above //////////////////////////////
@@ -80,7 +84,7 @@ var NewUserFormView = Backbone.View.extend({
 
     console.log('name: %s, email: %s, password: %s, password-confirm: %s, gender: %s', this.name, this.email, this.password, this.passwordConfirmation, this.gender);
 
-    this.el.reset();
+    // this.el.reset();
 
     return (this.$el.data('user-created') === true);
   },
