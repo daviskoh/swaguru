@@ -67,7 +67,7 @@ put conditional rendering of nav items using javascript -->
   <div class='container1'>
     <div id='profile-photo'>
       <%% if (this.model.get('profile_photo_file_name') != null) { %>
-        <a href="" class='th'>
+        <a href="<%%= this.model.get('profile_photo_file_name') %>" class='th'>
           <img src="" alt="">
         </a>
       <%% } else { %>
@@ -77,8 +77,8 @@ put conditional rendering of nav items using javascript -->
       <%% } %>
     </div>
 
-    <%% if (this.model.get('id') != sessionID) { %>
-      <input type='file' name='profile_photo' placeholder='Profile Photo'>
+    <%% if (this.model.get('id') === sessionID) { %>
+      <input type='file' name='profile_photo' placeholder='Profile Photo' id='fileInput'>
     <%% } %>
 
     <div id='profile-name'>
@@ -96,12 +96,14 @@ put conditional rendering of nav items using javascript -->
     </div>
 
     <!-- NOTE: render this ONLY when current_user === user.find(session[:user_id]) -->
-    <div id='user-actions'>
-      <ul class='button-group'>
-        <li><a href="#" class="button">Picture New</a></li>
-        <li><a href="#" class="button">Blog New</a></li>
-      </ul>
-    </div>
+    <%% if (loggedIn) { %>
+      <div id='user-actions'>
+        <ul class='button-group'>
+          <li><a href="#" class="button">Picture New</a></li>
+          <li><a href="#" class="button">Blog New</a></li>
+        </ul>
+      </div>
+    <%% } %>
   </div>
 
   <div class='container2'>

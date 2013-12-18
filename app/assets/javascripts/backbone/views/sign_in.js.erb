@@ -12,7 +12,7 @@ var SignInFormView = Backbone.View.extend({
     console.log('SignInFormView instantiated');
 
     this.session = opts.session;
-    this.user = opts.user;
+    this.model = opts.model;
 
     this.render();
     return this;
@@ -45,7 +45,9 @@ var SignInFormView = Backbone.View.extend({
         loggedIn = true; //////////
         sessionID = resp; /////////
 
-        // self.user.set('url', 'users/:id');
+        // self.model.set('url', 'users/' + resp );
+        // console.log(self.mode.get('url'));
+        // datUser = self.model;
 
         Backbone.history.navigate('users/' + resp, {trigger: true});
       },

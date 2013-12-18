@@ -29,6 +29,8 @@ var NavigationView = Backbone.View.extend({
   profile: function(e) {
     e.preventDefault();
 
+    // update current user
+
     if (sessionID != null) {
       Backbone.history.navigate('users/' + sessionID, {trigger: true});
     }
