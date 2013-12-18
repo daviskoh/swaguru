@@ -66,9 +66,9 @@ put conditional rendering of nav items using javascript -->
 <script type='text/html' class='user-show-page'>
   <div class='container1'>
     <div id='profile-photo'>
-      <%% if (this.model.get('profile_photo_file_name') != null) { %>
-        <a href="<%%= this.model.get('profile_photo_file_name') %>" class='th'>
-          <img src="" alt="">
+      <%% if (this.model.get('profile_photo_url') != null) { %>
+        <a href="" class='th'>
+          <img src="<%%= this.model.get('profile_photo_url') %>" alt="">
         </a>
       <%% } else { %>
         <a href="" class='th'>

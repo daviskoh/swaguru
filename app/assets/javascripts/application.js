@@ -28,7 +28,8 @@ $(function(){
   
   $(document).foundation();
 
-  new Router({session: new Session(), user: new User()});
+  window.user = new User();
+  new Router({session: new Session(), user: user});
   Backbone.history.start({pushState: true});
 });
 

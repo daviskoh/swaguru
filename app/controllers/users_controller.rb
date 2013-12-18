@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     # binding.pry
-    render json: @user, status: 200
+    render json: @user.as_json(methods: :profile_photo_url), status: 200
   end
 
   def create
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       binding.pry
       # redirect_to user_path(@user)
-      render json: @user, status: 200
+      render json: @user.as_json(methods: :profile_photo_url), status: 200
     else
       binding.pry
       # render :edit
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :profile_photo_file_name, :profile_photo_content_type, :profile_photo_file_size, :profile_photo_updated_at)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :profile_photo_file_name, :profile_photo_content_type, :profile_photo_file_size, :profile_photo_updated_at, :profile_photo)
   end
 
   def set_user
