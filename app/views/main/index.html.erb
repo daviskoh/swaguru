@@ -94,7 +94,9 @@ put conditional rendering of nav items using javascript -->
         <li><a href="#" class='button'>Following</a></li>
       </ul>
     </div>
+</script>
 
+<script type='text/html' class='user-show-page-bottom'>
     <!-- NOTE: render this ONLY when current_user === user.find(session[:user_id]) -->
     <%% if (loggedIn) { %>
       <div id='user-actions'>
@@ -105,9 +107,7 @@ put conditional rendering of nav items using javascript -->
         </ul>
       </div>
     <%% } %>
-</script>
 
-<script type='text/html' class='user-show-page-bottom'>
     <ul class='user-show-content'>
       <%% _.each(this.collection.models, function(model){ %>
           <li><img src='<%%= model.get('image_url') %>'</li>
