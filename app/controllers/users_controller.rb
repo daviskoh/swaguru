@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   respond_to :json#, :html
 
   def show
+    #TODO separate user show page into 2 view NOT 1
     #TODO check if through backbone/js can make request for user info
     # binding.pry
     if @user.profile_photo_file_name
@@ -15,14 +16,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
+    #TODO also unset password on client side
     #TODO change to user_params, NOT passing through PASSWORD
-    user = User.new(user_params)
+    @user = User.new(user_params)
  
-    if user.save
-      render json: user, status: 200
+    if @user.save
+      render json: secure_user, status: 200
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: @user.errors, status: :unprocessable_entity
     end
   end 
 
@@ -54,5 +56,9 @@ class UsersController < ApplicationController
       # redirect_to user_path(session[:user_id])
       render status: :unauthorized
     end
+  end
+
+  def secure_user
+    {id: @user.id, name: @user.name, email: @user.email, gender: @user.gender}
   end
 end 

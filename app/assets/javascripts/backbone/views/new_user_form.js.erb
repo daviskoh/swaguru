@@ -62,10 +62,14 @@ var NewUserFormView = Backbone.View.extend({
     this.model.save(null, {
       success: function(model, resp) {
         console.log('user save success callback');
+        self.model.clear().set(resp);
 
         self.$el.data('user-created', true);
         // document.location.href = '/';
         console.log(resp);
+
+        // self.model.unset('password');
+        // self.model.unset('password_confirmation');
 
         Backbone.history.navigate('session/new', {trigger: true});
       },

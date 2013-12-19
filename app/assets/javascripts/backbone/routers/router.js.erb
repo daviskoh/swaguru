@@ -77,7 +77,7 @@ var Router = Backbone.Router.extend({
         response = arguments;
 
         // populate this.user w/ user model w/ resp for rendering in usershowview
-        this.loadView(new UserShowView({model: self.user}));
+        this.loadView(new UserShowView({model: self.user, collection: new UserPhotos()}));
       },
       context: this
     });

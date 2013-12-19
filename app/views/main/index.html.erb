@@ -100,7 +100,8 @@ put conditional rendering of nav items using javascript -->
     <%% if (loggedIn) { %>
       <div id='user-actions'>
         <ul class='button-group'>
-          <li><a href="#" class="button">Picture New</a></li>
+          <!-- <li><a href="#" class="button" id='upload-new-photo'>Picture New</a></li> -->
+          <li><input type='file' name='new-photo' id='upload-new-photo'></li>
           <li><a href="#" class="button">Blog New</a></li>
         </ul>
       </div>
