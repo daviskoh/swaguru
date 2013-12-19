@@ -78,6 +78,8 @@ var Router = Backbone.Router.extend({
 
         // populate this.user w/ user model w/ resp for rendering in usershowview
         this.loadView(new UserShowView({model: self.user, collection: new UserPhotos()}));
+
+        // SEPARATE USERSHOWPAGE INTO 2 SEPARATE VIEWS
       },
       context: this
     });

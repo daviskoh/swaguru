@@ -109,7 +109,11 @@ put conditional rendering of nav items using javascript -->
   </div>
 
   <div class='container2'>
-    <ul class='user-show-content'></ul>
+    <ul class='user-show-content'>
+      <%% _.each(this.collection.models, function(model){ %>
+          <li><img src='<%%= model.get('image_url') %>'</li>
+        <%% }) %>
+    </ul>
   </div>
 </script>
 

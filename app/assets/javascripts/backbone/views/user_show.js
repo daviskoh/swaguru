@@ -17,6 +17,10 @@ var UserShowView = Backbone.View.extend({
     this.listenTo(this.model, "change", this.render);
 
     this.collection = opts.collection;
+    this.listenTo(this.collection, 'change', this.render);
+
+    console.log('fetching collection info');
+    this.collection.fetch();
 
     this.render();
     return this;
@@ -110,7 +114,7 @@ var UserShowView = Backbone.View.extend({
 
           console.log(reader.result);
 
-          photo = self.collection.create().save({
+          photo = self.collection.create({user_id: 1, image: reader.result}, {
             success: function(model, resp, options) {
               _.each(arguments, function(element) {
                 console.log(element);
