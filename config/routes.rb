@@ -5,5 +5,5 @@ Swaguru::Application.routes.draw do
 
   resource :session, only: [:create, :destroy]
 
-  # match '*path' => redirect '/'
+  # get '/*' => redirect('/')
 end

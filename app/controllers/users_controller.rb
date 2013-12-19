@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     #TODO check if through backbone/js can make request for user info
     # binding.pry
-    if @user.profile_photo
+    if @user.profile_photo_file_name
       render json: @user.as_json(methods: :profile_photo_url), status: 201
     else
       render json: @user, status: 201
