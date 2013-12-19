@@ -5,7 +5,9 @@ Swaguru::Application.routes.draw do
 
   resource :session, only: [:create, :destroy]
 
-  resources :photos, only: [:create, :destroy]
+  resources :photos, only: [:index, :create, :destroy, :show]
+
+  resources :users_photos, only: [:create, :destroy, :index]
 
   # get '/*' => redirect('/')
 end

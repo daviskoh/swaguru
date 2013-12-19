@@ -18,8 +18,9 @@ var UserShowBottomView = Backbone.View.extend({
 
     console.log('fetching collection info');
 
-    // FETCH INFO TOMORROW
-    // this.collection.fetch();
+    console.log(this.collection[0]);
+
+    console.log('this.collection.fetch() end');
 
     this.render();
     return this;
@@ -55,12 +56,12 @@ var UserShowBottomView = Backbone.View.extend({
             success: function(model, resp, options) {
               _.each(arguments, function(element) {
                 console.log(element);
-              })
+              });
             },
             error: function(model, resp, options) {
               _.each(arguments, function(element) {
                 console.log(element);
-              })
+              });
             }
           });
         };

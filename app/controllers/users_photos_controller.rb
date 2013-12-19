@@ -1,16 +1,9 @@
-class PhotosController < ApplicationController
-  before_action :authenticated!, :set_user, :authorized!, except: [:show, :index]
+class UsersPhotos < ApplicationController
+  before_action :authenticated!, :set_user, :authorized!, except: [:index]
 
   def index
-    @photos = Photo.all
     binding.pry
-    render json: @photos.as_json(method: :image_url), status: 200
-  end
-
-  def show
-    @photo = Photo.find(params[:id])
-    binding.pry
-    render json: @photo.as_json(method: :image_url), status: 200
+    render json: @user.photos.as_json(methods: :image_url), status: 200
   end
 
   def create

@@ -25,6 +25,7 @@ var Router = Backbone.Router.extend({
     //   },
     //   context: this
     // });
+    
 
     // instantiate navigation view once (when router create)
     $('body').append(new NavigationView({session: this.session}).el);
@@ -47,6 +48,8 @@ var Router = Backbone.Router.extend({
 
   userShow: function(id) {
     console.log('users/%s route hit', id);
+
+    this.user.url = '/users/' + id;
 
     console.log('current user url: %s', this.user.get('url'));
     
@@ -89,8 +92,8 @@ var Router = Backbone.Router.extend({
   },
 
   loadView: function(view) {
-    this.main && this.main.remove();
-    this.main = view;
+    $('.fixed').nextAll().remove();
+    
     // console.log('this.main: %s', this.main);
     $('body').append(view.el);
   }

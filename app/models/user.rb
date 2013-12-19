@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :profile_photo
 
+  has_many :photos
+
   has_secure_password
 
   def profile_photo_url
