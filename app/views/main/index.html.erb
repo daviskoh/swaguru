@@ -63,8 +63,7 @@ put conditional rendering of nav items using javascript -->
 </script>
 
 <!-- #Show User Page ########################################################### -->
-<script type='text/html' class='user-show-page'>
-  <div class='container1'>
+<script type='text/html' class='user-show-page-top'>
     <div id='profile-photo'>
       <%% if (this.model.get('profile_photo_url') != null) { %>
         <a href="" class='th'>
@@ -106,14 +105,13 @@ put conditional rendering of nav items using javascript -->
         </ul>
       </div>
     <%% } %>
-  </div>
+</script>
 
-  <div class='container2'>
+<script type='text/html' class='user-show-page-bottom'>
     <ul class='user-show-content'>
       <%% _.each(this.collection.models, function(model){ %>
           <li><img src='<%%= model.get('image_url') %>'</li>
         <%% }) %>
     </ul>
-  </div>
 </script>
 

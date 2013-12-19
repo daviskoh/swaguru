@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
     unless @user.id == session[:user_id]
       # redirect_to user_path(session[:user_id])
       render status: :unauthorized
+      return
     end
   end
 end
