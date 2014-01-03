@@ -1,3 +1,7 @@
+<!-- set sessionID for each page load -->
+<% if logged_in? %>
+  <script>var sessionID = <%= session[:user_id] %></script>
+<% end %>
 <!-- #Navigation    ##########################################################-->
 <!-- <div class="fixed"></div> -->
 <!-- <%% embedded javascript %>
@@ -98,7 +102,7 @@ put conditional rendering of nav items using javascript -->
 
 <script type='text/html' class='user-show-page-bottom'>
     <!-- NOTE: render this ONLY when current_user === user.find(session[:user_id]) -->
-    <%% if (loggedIn) { %>
+    <%% if (sessionID) { %>
       <div id='user-actions'>
         <ul class='button-group'>
           <!-- <li><a href="#" class="button" id='upload-new-photo'>Picture New</a></li> -->
