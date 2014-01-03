@@ -49,7 +49,7 @@ var Router = Backbone.Router.extend({
   userShow: function(id) {
     console.log('users/%s route hit', id);
 
-    this.user.url = '/users/' + id;
+    this.user.url = '/api/users/' + id;
 
     console.log('current user url: %s', this.user.get('url'));
     
@@ -68,7 +68,7 @@ var Router = Backbone.Router.extend({
     // });
 
     $.ajax({
-      url: "/users/" + id,
+      url: "/api/users/" + id,
       type: "GET",
       dataType: "json",
       success: function(userJSON) {

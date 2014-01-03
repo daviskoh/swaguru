@@ -59,7 +59,7 @@ var UserShowTopView = Backbone.View.extend({
           // self.model.set('profile_photo_file_size', file.size);
           // self.model.set('profile_photo_updated_at', new Date());
 
-          self.model.url = '/users/' + self.model.get('id');
+          self.model.url = '/api/users/' + self.model.get('id');
 
           // persist to server DB
           self.model.save({

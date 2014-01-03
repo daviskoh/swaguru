@@ -12,7 +12,7 @@ var NewUserFormView = Backbone.View.extend({
     console.log('UserFormView initialized');
 
     this.model = opts.model;
-    this.model.url = '/users';
+    this.model.url = '/api/users';
 
     this.submitButton = this.$el.find("input[type='submit']");
     this.render();

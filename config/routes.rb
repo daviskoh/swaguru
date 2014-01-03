@@ -1,13 +1,15 @@
 Swaguru::Application.routes.draw do
   root to: 'main#index'
   
-  resources :users, only: [:create, :update, :destroy, :show]
+  scope 'api' do
+    resources :users, only: [:create, :update, :destroy, :show]
 
-  resource :session, only: [:create, :destroy]
+    resource :session, only: [:create, :destroy]
 
-  resources :photos, only: [:index, :create, :destroy, :show]
+    resources :photos, only: [:index, :create, :destroy, :show]
 
-  resources :users_photos, only: [:create, :destroy, :index]
+    resources :users_photos, only: [:create, :destroy, :index]
+  end
 
-  # get '/*' => redirect('/')
+  match '*path', to: 'main#index', via: :get
 end

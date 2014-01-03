@@ -1,4 +1,4 @@
 var Session = Backbone.Model.extend({
-  url: '/session',
+  url: '/api/session',
   paramsRoot: 'session'
 });

@@ -1,5 +1,5 @@
 var CurrentUser = Backbone.Model.extend({
-  url: '/users', 
+  url: '/api/users', 
   paramRoot: 'user'
 
   
