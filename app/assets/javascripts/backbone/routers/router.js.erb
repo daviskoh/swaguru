@@ -26,9 +26,7 @@ var Router = Backbone.Router.extend({
     //   context: this
     // });
     
-
-    // instantiate navigation view once (when router create)
-    $('body').append(new NavigationView({session: this.session}).el);
+    this.loadNavigationView();
   },
 
   welcome: function() {
@@ -92,9 +90,16 @@ var Router = Backbone.Router.extend({
   },
 
   loadView: function(view) {
-    $('.fixed').nextAll().remove();
+    // $('.fixed').nextAll().remove();
+    $('body').empty();
+    this.loadNavigationView();
     
     // console.log('this.main: %s', this.main);
     $('body').append(view.el);
+  },
+
+  loadNavigationView: function() {
+    // instantiate navigation each time new page is loaded
+    $('body').append(new NavigationView({session: this.session}).el);    
   }
 });

@@ -1,23 +1,30 @@
 <!-- set sessionID for each page load -->
 <% if logged_in? %>
   <script>var sessionID = <%= session[:user_id] %></script>
+<% else %>
+  <script>var sessionID</script>
 <% end %>
 <!-- #Navigation    ##########################################################-->
 <!-- <div class="fixed"></div> -->
 <!-- <%% embedded javascript %>
 put conditional rendering of nav items using javascript -->
 <script type='text/html' class='navigation'>
-    <nav class="top-bar">
-      <section class="top-bar-section">
-        <ul class="right">
-          <li><a href="" id='home-nav'>Home</a></li>
+  <nav class="top-bar">
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><a href="" id='home-nav'>Home</a></li>
+
+        <%% if (sessionID) { %>
           <li><a href="" id="user-show-nav">Profile</a></li>
+          <li><a href="" id='sign-out-nav'>Sign Out</a></li>
+        <%% } else { %>
           <li><a href="" id='sign-up-nav'>Sign Up</a></li>
           <li><a href="" id='sign-in-nav'>Sign In</a></li>
-          <li><a href="" id='sign-out-nav'>Sign Out</a></li>
-        </ul>
-      </section>
-    </nav>
+        <%% } %>
+
+      </ul>
+    </section>
+  </nav>
 </script>
 <!-- #Welcome page    ##########################################################-->
 <script type='text/html' class='welcome'>
