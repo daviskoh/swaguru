@@ -5,7 +5,8 @@ var ProfilePhotoUploadView = Backbone.View.extend({
 
   events: {
     'change #fileInput': 'readProfilePhoto',
-    'click #upload-profile-photo': 'updateProfilePhoto'
+    'click #upload-profile-photo': 'updateProfilePhoto',
+    'click a.close-reveal-modal': 'closeProfilePhotoModal'
   },
 
   template: _.template($("script.profile-photo-upload[type='text/html']").html()),
@@ -50,8 +51,10 @@ var ProfilePhotoUploadView = Backbone.View.extend({
 
           // preview profile profile
           var img = $('<img>');
-          img.src = reader.result;
-          $('.preview-profile-photo').appendChild(img);
+          console.log(img);
+          img.attr('src', reader.result);
+
+          $('.preview-profile-photo').append($('<h3>Photo Preview</h3>')).append(img);
         };
 
         reader.readAsDataURL(file);
@@ -87,8 +90,21 @@ var ProfilePhotoUploadView = Backbone.View.extend({
       }
     }, {reset: true});
 
-    $('.preview-profile-photo').empty();
+    this.clearModal();
     console.log('model.save() done');
+  },
+
+  closeProfilePhotoModal: function() {
+    console.log('CLOSING profile photo modal');
+
+    this.clearModal();
+
+    this.$el.foundation('reveal', 'close');
+  },
+
+  clearModal: function() {
+    $('.preview-profile-photo').empty();
+    $('#fileInput').val('')
   },
 
   render: function() {

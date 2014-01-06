@@ -22,10 +22,7 @@
 //= require_tree ./backbone/views
 //= require_tree ./backbone/routers
 
-// Foundation
 $(function(){
-  
-  $(document).foundation();
 
   // Rails CSRF Protection
   $(document).ajaxSend(function (e, xhr, options) {
@@ -38,5 +35,8 @@ $(function(){
   new Router({session: new Session(), user: user});
 
   Backbone.history.start({pushState: true});
+
+  // init foundation
+  $(document).foundation();
 });
 

@@ -87,6 +87,9 @@ var Router = Backbone.Router.extend({
         // remains invisible until revealed
         if (sessionID) {
           $('body').append((new ProfilePhotoUploadView({model: self.user})).el);
+          // reinitialize foundation
+          $(document).foundation();
+          console.log('REINIT foundation');
         }
       },
       context: this
