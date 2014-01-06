@@ -1,4 +1,4 @@
-var ProfilePhotoUploadView = Backbone.View.extend({
+var ProfilePhotoModalView = Backbone.View.extend({
   tagName: 'div',
   className: 'reveal-modal',
   id: 'profile-photo-modal',

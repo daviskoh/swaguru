@@ -16,10 +16,10 @@ describe 'a user can upload a profile photo', js: true do
     find('#profile-photo').click
 
     within 'div#profile-photo-modal' do 
-      attach_file 'profile_photo', '/Desktop/bro.jpg'
+      attach_file 'profile_photo', '/Users/daviskoh/Desktop/bro.jpg'
       click_button 'Submit'
     end
 
-    expect(User.find(2)).to have(1).profile_photos
+    expect(User.last.profile_photo).to_not be_nil
   end
 end
