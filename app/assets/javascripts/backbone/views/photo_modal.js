@@ -1,4 +1,4 @@
-var ProfilePhotoModalView = Backbone.View.extend({
+var PhotoModalView = Backbone.View.extend({
   tagName: 'div',
   className: 'reveal-modal',
   id: 'profile-photo-modal',
@@ -21,7 +21,8 @@ var ProfilePhotoModalView = Backbone.View.extend({
   },
 
   readProfilePhoto: function() {
-    console.log('show me whats inside maaaaaaane');
+    console.log('readProfilePhoto method call');
+
     var fileInput = $('#fileInput')[0];
     console.log(fileInput);
 
@@ -40,11 +41,7 @@ var ProfilePhotoModalView = Backbone.View.extend({
         console.log(reader);
 
         reader.onload = function(e) {
-          console.log('reader.onload bitch');
-
-          console.log(reader.result);
-
-          console.log(self.model);
+          console.log('reader.onload begin');
 
           // set this.reader to be used or not
           self.reader = reader;

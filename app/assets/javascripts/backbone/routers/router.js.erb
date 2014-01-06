@@ -86,7 +86,7 @@ var Router = Backbone.Router.extend({
         // responsible for profile phot changes
         // remains invisible until revealed
         if (sessionID) {
-          $('body').append((new ProfilePhotoModalView({model: self.user})).el);
+          $('body').append((new PhotoModalView({model: self.user})).el);
           // reinitialize foundation
           $(document).foundation();
           console.log('REINIT foundation');

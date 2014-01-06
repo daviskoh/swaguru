@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe 'a user can upload a profile photo', js: true do 
+describe 'clickable profile photo', js: true do 
   before :each do 
     user_login
   end
 
-  it 'provides the option to upload a profile photo' do 
+  it 'provides a popup to upload a profile photo' do 
     find('#profile-photo').click
 
     within 'div#profile-photo-modal' do 
