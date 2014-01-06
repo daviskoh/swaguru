@@ -3,9 +3,7 @@ var UserShowTopView = Backbone.View.extend({
   className: 'container1',
 
   events: {
-    'click a img': 'revealProfilePhotoForm',
-    // 'click a.close-reveal-modal': 'closeProfilePhotoForm',
-    'change #fileInput': 'updateProfilePhoto'
+    'click a img': 'revealProfilePhotoModal'  
   },
 
   template: _.template($("script.user-show-page-top[type='text/html']").html()),
@@ -26,80 +24,16 @@ var UserShowTopView = Backbone.View.extend({
     return this;
   },
 
-  revealProfilePhotoForm: function() {
+  revealProfilePhotoModal: function() {
     console.log('OPENING profile photo form');
-    $("#myModal").foundation('reveal', 'open');
+    $("#profile-photo-modal").foundation('reveal', 'open');
 
     $('a.close-reveal-modal').on('click', function() {
-      $("#myModal").foundation('reveal', 'close');
+      // empty preview photo
+      $('.preview-profile-photo').empty();
+
+      $("#profile-photo-modal").foundation('reveal', 'close');
     });
-  },
-
-  // closeProfilePhotoForm: function() {
-  //   console.log('CLOSING profile photo form');
-  //   $("#myModal").foundation('reveal', 'close');
-  // },
-
-  updateProfilePhoto: function() {
-    console.log('show me whats inside maaaaaaane');
-    var fileInput = $('#fileInput')[0];
-    console.log(fileInput);
-
-    var file = fileInput.files[0];
-    console.log('the image file: ');
-    console.log(file);
-
-    var imageType = /image.*/;  
-    
-    var self = this;
-    if (file.type.match(imageType)) {
-        console.log('FILE IS SUPPORTED');
-
-        var reader = new FileReader();
-
-        console.log(reader);
-        reader.onload = function(e) {
-          console.log('reader.onload bitch');
-
-          // set src of profile to above
-          // $('a.th img').attr('src', reader.result);
-          console.log(reader.result);
-
-          console.log(self.model);
-
-          self.model.set('profile_photo', reader.result);
-
-          // self.model.set('profile_photo_file_name', file.name);
-          // self.model.set('profile_photo_content_type', file.type);
-          // self.model.set('profile_photo_file_size', file.size);
-          // self.model.set('profile_photo_updated_at', new Date());
-
-          self.model.url = '/api/users/' + self.model.get('id');
-
-          // persist to server DB
-          self.model.save({
-            success: function() {
-              console.log('model.save() SUCCESS');
-              _.each(arguments, function(element) {
-                console.log(element);
-              });
-            },
-            error: function(){
-              console.log('model.save() ERROR');
-              _.each(arguments, function(element) {
-                console.log(element);
-              });
-            }
-          }, {reset: true});
-
-          console.log('model.save() done');
-        };
-
-        reader.readAsDataURL(file);
-      } else {
-        console.log('FILE NOT SUPPORTED');
-        // render error message somewhere
-    }  
   },
 
   render: function() {

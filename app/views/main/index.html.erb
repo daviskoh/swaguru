@@ -88,30 +88,36 @@ put conditional rendering of nav items using javascript -->
   </div>
 </script>
 
+<!-- #Profile Photo Upload ################################################## -->
+<script type='text/html' class='profile-photo-upload'>
+  <h2>Upload a Profile Photo</h2>
+
+  <%% if (this.model.get('id') === sessionID) { %>
+    <input type='file' name='profile_photo' placeholder='Profile Photo' id='fileInput'>
+  <%% } %>
+
+  <div class='preview-profile-photo' id='profile-photo-frame'></div>
+
+  <a class='button' id='upload-profile-photo'>Submit</a>
+
+  <a class="close-reveal-modal">&#215;</a>
+</script>
+
 <!-- #Show User Page ########################################################### -->
 <script type='text/html' class='user-show-page-top'>
-  <div id="myModal" class="reveal-modal" data-reveal>
-    <h2>TEST MODAL</h2>
-    <a class="close-reveal-modal">&#215;</a>
-  </div>
-
   <div class="rows">
     <div class="large-8 large-centered columns">
       <div id='profile-photo-frame'>
         <%% if (this.model.get('profile_photo_url') != null) { %>
-          <a id='profile-photo' data-reveal-id='myModal'>
+          <a id='profile-photo' data-reveal-id='profile-photo-modal'>
             <img src="<%%= this.model.get('profile_photo_url') %>" alt="">
           </a>
         <%% } else { %>
-          <a id='profile-photo' data-reveal-id='myModal'>
+          <a id='profile-photo' data-reveal-id='profile-photo-modal'>
             <img src='http://placekitten.com/200/300' alt=''>
           </a>
         <%% } %>
       </div>
-
-      <%% if (this.model.get('id') === sessionID) { %>
-        <input type='file' name='profile_photo' placeholder='Profile Photo' id='fileInput'>
-      <%% } %>
 
       <div id='profile-name'>
         <p>

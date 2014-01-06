@@ -13,9 +13,9 @@ describe 'a user can upload a profile photo', js: true do
   end
 
   it 'provides the option to upload a profile photo' do 
-    click_link 'profile-photo'
+    find('#profile-photo').click
 
-    within 'div#upload-profile-photo' do 
+    within 'div#profile-photo-modal' do 
       attach_file 'profile_photo', '/Desktop/bro.jpg'
       click_button 'Submit'
     end
