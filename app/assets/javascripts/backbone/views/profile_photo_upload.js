@@ -8,9 +8,11 @@ var ProfilePhotoUploadView = Backbone.View.extend({
     'click #upload-profile-photo': 'updateProfilePhoto'
   },
 
-  // template: _.template($("script.profile-photo-upload[type='text/html']").html()),
+  template: _.template($("script.profile-photo-upload[type='text/html']").html()),
 
-  initialize: function() {
+  initialize: function(opts) {
+    this.user = opts.user;
+
     console.log('ProfilePhotoUploadView instantiated');
 
     this.render();
@@ -60,17 +62,17 @@ var ProfilePhotoUploadView = Backbone.View.extend({
   },
 
   updateProfilePhoto: function() {
-    self.model.set('profile_photo', this.reader.result);
+    this.model.set('profile_photo', this.reader.result);
 
-    // self.model.set('profile_photo_file_name', file.name);
-    // self.model.set('profile_photo_content_type', file.type);
-    // self.model.set('profile_photo_file_size', file.size);
-    // self.model.set('profile_photo_updated_at', new Date());
+    // this.model.set('profile_photo_file_name', file.name);
+    // this.model.set('profile_photo_content_type', file.type);
+    // this.model.set('profile_photo_file_size', file.size);
+    // this.model.set('profile_photo_updated_at', new Date());
 
-    self.model.url = '/api/users/' + self.model.get('id');
+    this.model.url = '/api/users/' + this.model.get('id');
 
     // persist to server DB
-    self.model.save({
+    this.model.save({
       success: function() {
         console.log('model.save() SUCCESS');
         _.each(arguments, function(element) {
@@ -87,9 +89,9 @@ var ProfilePhotoUploadView = Backbone.View.extend({
 
     $('.preview-profile-photo').empty();
     console.log('model.save() done');
-  }//,
+  },
 
-  // render: function() {
-  //   this.$el.html(this.template());
-  // }
+  render: function() {
+    this.$el.html(this.template());
+  }
 });
