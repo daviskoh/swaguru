@@ -4,6 +4,7 @@
 <% else %>
   <script>var sessionID</script>
 <% end %>
+
 <!-- #Navigation    ##########################################################-->
 <!-- <div class="fixed"></div> -->
 <!-- <%% embedded javascript %>
@@ -27,106 +28,117 @@ put conditional rendering of nav items using javascript -->
   </nav>
 </script>
 <!-- #Welcome page    ##########################################################-->
-<script type='text/html' class='welcome'>
-  <h1>Welcome to Swagu.ru</h1>
 
+<script type='text/html' class='welcome'>
   <div class='rows'>
-    <div class='large-8 columns'>
-      
+    <div class='large-8 large-centered columns text-center'>
+      <h1>Welcome to Swagu.ru</h1>
+
+
     </div>
   </div>
 
   <div class='rows'>
-    <div class='large-4 columns'>
+    <div class='large-4 large-centered columns text-center'>
       <a href="#" class='large button' id='sign-up-button'>Sign Up</a>
       <a href="#" class='large button' id='sign-in-button'>Sign In</a>
     </div>
   </div>  
 </script>
+
 <!-- #Sign Up User Form  ######################################################### -->
 <script type='text/html' class='sign-up-form'>
-  <h1>Create a New Account</h1>
+  <div class="rows">
+    <div class="large-6 large-centered columns text-center">
+      <h1>Create a New Account</h1>
 
-  <form class='new-user'>
-    <fieldset>
-      <input type="text" name="name" placeholder='Name'>
-      <input type="email" name='email' placeholder='Email'>
-      <input type="password" name='password' placeholder='Password'>
-      <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
+      <form class='new-user'>
+        <fieldset>
+          <input type="text" name="name" placeholder='Name'>
+          <input type="email" name='email' placeholder='Email'>
+          <input type="password" name='password' placeholder='Password'>
+          <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
 
-      <select name="gender" id="" placeholder='Gender'>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-      <button>Sign Up</button>
-    </fieldset>
-  </form>
+          <select name="gender" id="" placeholder='Gender'>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <button>Sign Up</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </script>
 
 <!-- #Sign In User Form  ###########################################################  -->
 <script type='text/html' class='sign-in-form'>
-  <h1>Sign In</h1>
+  <div class="rows">
+    <div class="large-6 large-centered columns text-center">
+      <h1>Sign In</h1>
 
-  <form class='sign-in'>
-    <fieldset>
-      <input type="email" name='email' placeholder='Email'>
-      <input type="password" name='password' placeholder='Password'>
-      <button>Sign In</button>
-    </fieldset>
-  </form>
+      <form class='sign-in'>
+        <fieldset>
+          <input type="email" name='email' placeholder='Email'>
+          <input type="password" name='password' placeholder='Password'>
+          <button>Sign In</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </script>
 
 <!-- #Show User Page ########################################################### -->
 <script type='text/html' class='user-show-page-top'>
-    <div id='profile-photo'>
-      <%% if (this.model.get('profile_photo_url') != null) { %>
-        <a href="" class='th'>
+  <div class="rows">
+    <div class="large-8 large-centered columns">
+      <div id='profile-photo-frame'>
+        <%% if (this.model.get('profile_photo_url') != null) { %>
           <img src="<%%= this.model.get('profile_photo_url') %>" alt="">
-        </a>
-      <%% } else { %>
-        <a href="" class='th'>
+        <%% } else { %>
           <img src='http://placekitten.com/200/300' alt=''>
-        </a>
+        <%% } %>
+      </div>
+
+      <%% if (this.model.get('id') === sessionID) { %>
+        <input type='file' name='profile_photo' placeholder='Profile Photo' id='fileInput'>
       <%% } %>
-    </div>
 
-    <%% if (this.model.get('id') === sessionID) { %>
-      
-      <input type='file' name='profile_photo' placeholder='Profile Photo' id='fileInput'>
-    <%% } %>
+      <div id='profile-name'>
+        <p>
+          <%%= this.model.get('name') %>
+        </p>
+      </div>
 
-    <div id='profile-name'>
-      <p>
-        <%%= this.model.get('name') %>
-      </p>
+      <div id='stats'>
+        <ul class='button-group'>
+          <li><a href="#" class='button'>Style Points</a></li>
+          <li><a href="#" class='button'>Followers</a></li>
+          <li><a href="#" class='button'>Following</a></li>
+        </ul>
+      </div>
     </div>
-
-    <div id='stats'>
-      <ul class='button-group'>
-        <li><a href="#" class='button'>Style Points</a></li>
-        <li><a href="#" class='button'>Followers</a></li>
-        <li><a href="#" class='button'>Following</a></li>
-      </ul>
-    </div>
+  </div>
 </script>
 
 <script type='text/html' class='user-show-page-bottom'>
-    <!-- NOTE: render this ONLY when current_user === user.find(session[:user_id]) -->
-    <%% if (sessionID) { %>
-      <div id='user-actions'>
-        <ul class='button-group'>
-          <!-- <li><a href="#" class="button" id='upload-new-photo'>Picture New</a></li> -->
-          <li><input type='file' name='new-photo' id='upload-new-photo'></li>
-          <li><a href="#" class="button">Blog New</a></li>
-        </ul>
-      </div>
-    <%% } %>
+  <div class="rows">
+    <div class="large-8 large-centered text-center">
+      <%% if (sessionID) { %>
+        <div id='user-actions'>
+          <ul class='button-group'>
+            <!-- <li><a href="#" class="button" id='upload-new-photo'>Picture New</a></li> -->
+            <li><input type='file' name='new-photo' id='upload-new-photo'></li>
+            <li><a href="#" class="button">Blog New</a></li>
+          </ul>
+        </div>
+      <%% } %>
 
-    <ul class='user-show-content'>
-      <%% _.each(this.collection.models, function(model){ %>
+      <ul class='user-show-content'>
+        <%% _.each(this.collection.models, function(model){ %>
           <li><img src='<%%= model.get('image_url') %>'</li>
-      <%% }) %>
-    </ul>
+        <%% }) %>
+      </ul>  
+    </div>
+  </div>  
 </script>
-

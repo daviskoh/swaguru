@@ -19,3 +19,8 @@ input.error { border: 2px solid red; }
 div.container1 {
   margin-top: 5%;
 }
+
+div#profile-photo-frame img {
+  width: 200px;
+
+}
