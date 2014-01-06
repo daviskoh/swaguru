@@ -3,7 +3,8 @@ var UserShowTopView = Backbone.View.extend({
   className: 'container1',
 
   events: {
-    'click a img': 'clickProfile',
+    'click a img': 'revealProfilePhotoForm',
+    // 'click a.close-reveal-modal': 'closeProfilePhotoForm',
     'change #fileInput': 'updateProfilePhoto'
   },
 
@@ -24,6 +25,20 @@ var UserShowTopView = Backbone.View.extend({
     this.render();
     return this;
   },
+
+  revealProfilePhotoForm: function() {
+    console.log('OPENING profile photo form');
+    $("#myModal").foundation('reveal', 'open');
+
+    $('a.close-reveal-modal').on('click', function() {
+      $("#myModal").foundation('reveal', 'close');
+    });
+  },
+
+  // closeProfilePhotoForm: function() {
+  //   console.log('CLOSING profile photo form');
+  //   $("#myModal").foundation('reveal', 'close');
+  // },
 
   updateProfilePhoto: function() {
     console.log('show me whats inside maaaaaaane');
