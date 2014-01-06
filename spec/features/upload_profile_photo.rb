@@ -2,14 +2,7 @@ require 'spec_helper'
 
 describe 'a user can upload a profile photo', js: true do 
   before :each do 
-    visit '/session/new'
-
-    within 'form.sign-in' do 
-      fill_in :email, with: "bob@bob.com"
-      fill_in :password, with: "Bob"
-    end
-
-    click_button 'Sign In'
+    user_login
   end
 
   it 'provides the option to upload a profile photo' do 
