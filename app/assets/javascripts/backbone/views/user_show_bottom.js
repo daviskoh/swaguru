@@ -76,15 +76,17 @@ var UserShowBottomView = Backbone.View.extend({
   revealPhotoModal: function(e) {
     e.preventDefault();
 
-    console.log('OPENING photo modal');
+    if (this.model.get('id') === sessionID) {
+      console.log('OPENING photo modal');
 
-    var modal = $("#photo-modal");
+      var modal = $("#photo-modal");
 
-    $(modal.children()[0]).text('Upload a New Photo');
+      $(modal.children()[0]).text('Upload a New Photo');
 
-    $(modal.children('button')[1]).show();
+      $(modal.children('button')[1]).show();
 
-    modal.foundation('reveal', 'open');
+      modal.foundation('reveal', 'open');
+    }
   },
 
   render: function() {

@@ -27,15 +27,19 @@ var UserShowTopView = Backbone.View.extend({
   revealProfilePhotoModal: function(e) {
     e.preventDefault();
 
-    console.log('OPENING profile photo modal');
+    if (this.model.get('id') === sessionID) {
+      console.log('OPENING profile photo modal');
 
-    var modal = $("#photo-modal");
+      var modal = $("#photo-modal");
 
-    $(modal.children()[0]).text('Update Profile Photo');
+      $(modal.children()[0]).text('Update Profile Photo');
 
-    $(modal.children('button')[0]).show();
+      $(modal.children('button')[0]).show();
 
-    modal.foundation('reveal', 'open');
+      modal.foundation('reveal', 'open');
+    { else {
+      console.log('NOT authorized to upload photo');
+    }
   },
 
   render: function() {
