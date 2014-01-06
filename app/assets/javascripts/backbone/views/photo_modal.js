@@ -91,6 +91,7 @@ var PhotoModalView = Backbone.View.extend({
     }, {reset: true});
 
     this.clearModal();
+    this.closePhotoModal();
     console.log('model.save() done');
   },
 
@@ -98,18 +99,25 @@ var PhotoModalView = Backbone.View.extend({
     console.log('UPLOADING new photo');
 
     // create new user's photo on client side
-    photo = self.collection.create({user_id: self.model.get('id'), image: reader.result}, {
+    photo = this.collection.create({user_id: this.model.get('id'), image: this.reader.result}, {
       success: function(model, resp, options) {
+        console.log('new photo CREATE SUCCESS');
+
         _.each(arguments, function(element) {
           console.log(element);
         });
       },
       error: function(model, resp, options) {
+        console.log('new photo CREATE ERROR');
+
         _.each(arguments, function(element) {
           console.log(element);
         });
       }
     });
+
+    this.clearModal();
+    this.closePhotoModal();
   },
 
   closePhotoModal: function() {
