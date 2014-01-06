@@ -1,6 +1,5 @@
 var UserPhotos = Backbone.Collection.extend({
-  // url: '/users_photos',
-  url: '/api/photos',
+  url: '/api/' + sessionID + '/photos',
   model: Photo,
 
   initialize: function() {

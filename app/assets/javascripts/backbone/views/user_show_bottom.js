@@ -3,7 +3,7 @@ var UserShowBottomView = Backbone.View.extend({
   className: 'container2',
 
   events: {
-    'change #upload-new-photo': 'uploadNewPhoto'
+    'click #upload-new-photo': 'revealPhotoModal'
   },
 
   template: _.template($("script.user-show-page-bottom[type='text/html']").html()),
@@ -71,6 +71,20 @@ var UserShowBottomView = Backbone.View.extend({
         console.log('FILE NOT SUPPORTED');
         // render error message somewhere
     }  
+  },
+
+  revealPhotoModal: function(e) {
+    e.preventDefault();
+
+    console.log('OPENING photo modal');
+
+    var modal = $("#photo-modal");
+
+    $(modal.children()[0]).text('Upload a New Photo');
+
+    $(modal.children('button')[1]).show();
+
+    modal.foundation('reveal', 'open');
   },
 
   render: function() {

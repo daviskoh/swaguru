@@ -17,10 +17,10 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     if @photo.save
-      # binding.pry
+      binding.pry
       render json: @photo.as_json(methods: :image_url), status: 200
     else
-      # binding.pry
+      binding.pry
       render json: @photo.errors, status: :unprocessable_entity
     end
   end

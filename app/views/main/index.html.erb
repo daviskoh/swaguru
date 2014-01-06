@@ -88,17 +88,18 @@ put conditional rendering of nav items using javascript -->
   </div>
 </script>
 
-<!-- #Profile Photo Upload ################################################## -->
-<script type='text/html' class='profile-photo-upload'>
-  <h2>Upload a Profile Photo</h2>
+<!-- #Photo Upload Modal Filler ################################################## -->
+<script type='text/html' class='photo-upload'>
+  <h2></h2>
 
   <%% if (this.model.get('id') === sessionID) { %>
     <input type='file' name='photo' id='fileInput'>
   <%% } %>
 
-  <div class='preview-profile-photo' id='profile-photo-frame'></div>
+  <div class='preview-photo' id='photo-frame'></div>
 
-  <button id='upload-profile-photo'>Submit</button>
+  <button id='upload-profile-photo'>Update Profile Photo</button>
+  <button id='upload-photo'>Upload Photo</button>
 
   <a class="close-reveal-modal">&#215;</a>
 </script>
@@ -109,11 +110,11 @@ put conditional rendering of nav items using javascript -->
     <div class="large-8 large-centered columns">
       <div id='profile-photo-frame'>
         <%% if (this.model.get('profile_photo_url') != null) { %>
-          <a data-reveal-id='profile-photo-modal'>
+          <a data-reveal-id='photo-modal'>
             <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
           </a>
         <%% } else { %>
-          <a data-reveal-id='profile-photo-modal'>
+          <a href='' data-reveal-id='photo-modal'>
             <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
           </a>
         <%% } %>
@@ -138,12 +139,11 @@ put conditional rendering of nav items using javascript -->
 
 <script type='text/html' class='user-show-page-bottom'>
   <div class="rows">
-    <div class="large-8 large-centered text-center">
+    <div class="large-8 large-centered columns text-center">
       <%% if (sessionID) { %>
         <div id='user-actions'>
           <ul class='button-group'>
-            <!-- <li><a href="#" class="button" id='upload-new-photo'>Picture New</a></li> -->
-            <li><input type='file' name='new-photo' id='upload-new-photo'></li>
+            <li><a href="" class="button" id='upload-new-photo' data-reveal-id='photo-modal'>Picture New</a></li>
             <li><a href="#" class="button">Blog New</a></li>
           </ul>
         </div>
@@ -151,7 +151,7 @@ put conditional rendering of nav items using javascript -->
 
       <ul class='user-show-content'>
         <%% _.each(this.collection.models, function(model){ %>
-          <li><img src='<%%= model.get('image_url') %>'</li>
+          <li><img src='<%%= model.get('image_url') %>'></li>
         <%% }) %>
       </ul>  
     </div>

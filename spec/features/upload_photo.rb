@@ -6,11 +6,11 @@ describe 'upload photo button', js: true do
   end
 
   it 'provides a popup to upload a new photo' do 
-    find('#upload-photo').click
+    find('#upload-new-photo').click
 
-    within 'div#upload-photo-modal' do 
+    within 'div#photo-modal' do 
       attach_file 'photo', '/Users/daviskoh/Desktop/bro.jpg'
-      click_button 'Submit'
+      click_button 'Upload Photo'
     end
 
     expect(User.last).to have(1).photos

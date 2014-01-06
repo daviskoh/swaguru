@@ -1,22 +1,25 @@
 var PhotoModalView = Backbone.View.extend({
   tagName: 'div',
   className: 'reveal-modal',
-  id: 'profile-photo-modal',
+  id: 'photo-modal',
 
   events: {
     'change #fileInput': 'readProfilePhoto',
-    'click #upload-profile-photo': 'updateProfilePhoto',
-    'click a.close-reveal-modal': 'closeProfilePhotoModal'
+    'click button#upload-profile-photo': 'updateProfilePhoto',
+    'click button#upload-photo': 'uploadNewPhoto',
+    'click a.close-reveal-modal': 'closePhotoModal'
   },
 
-  template: _.template($("script.profile-photo-upload[type='text/html']").html()),
+  template: _.template($("script.photo-upload[type='text/html']").html()),
 
   initialize: function(opts) {
-    this.user = opts.user;
+    this.model = opts.model;
+    this.collection = opts.collection;
 
     console.log('ProfilePhotoUploadView instantiated');
 
     this.render();
+    this.clearModal();
     return this;
   },
 
@@ -51,7 +54,7 @@ var PhotoModalView = Backbone.View.extend({
           console.log(img);
           img.attr('src', reader.result);
 
-          $('.preview-profile-photo').append($('<h3>Photo Preview</h3>')).append(img);
+          $('.preview-photo').append($('<h3>Photo Preview</h3>')).append(img);
         };
 
         reader.readAsDataURL(file);
@@ -91,7 +94,25 @@ var PhotoModalView = Backbone.View.extend({
     console.log('model.save() done');
   },
 
-  closeProfilePhotoModal: function() {
+  uploadNewPhoto: function() {
+    console.log('UPLOADING new photo');
+
+    // create new user's photo on client side
+    photo = self.collection.create({user_id: self.model.get('id'), image: reader.result}, {
+      success: function(model, resp, options) {
+        _.each(arguments, function(element) {
+          console.log(element);
+        });
+      },
+      error: function(model, resp, options) {
+        _.each(arguments, function(element) {
+          console.log(element);
+        });
+      }
+    });
+  },
+
+  closePhotoModal: function() {
     console.log('CLOSING profile photo modal');
 
     this.clearModal();
@@ -100,7 +121,8 @@ var PhotoModalView = Backbone.View.extend({
   },
 
   clearModal: function() {
-    $('.preview-profile-photo').empty();
+    this.$el.children('button').hide();
+    $('.preview-photo').empty();
     $('#fileInput').val('')
   },
 

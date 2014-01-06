@@ -24,9 +24,18 @@ var UserShowTopView = Backbone.View.extend({
     return this;
   },
 
-  revealProfilePhotoModal: function() {
-    console.log('OPENING profile photo form');
-    $("#profile-photo-modal").foundation('reveal', 'open');
+  revealProfilePhotoModal: function(e) {
+    e.preventDefault();
+
+    console.log('OPENING profile photo modal');
+
+    var modal = $("#photo-modal");
+
+    $(modal.children()[0]).text('Update Profile Photo');
+
+    $(modal.children('button')[0]).show();
+
+    modal.foundation('reveal', 'open');
   },
 
   render: function() {

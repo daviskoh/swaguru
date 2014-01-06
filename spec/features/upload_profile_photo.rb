@@ -8,9 +8,9 @@ describe 'clickable profile photo', js: true do
   it 'provides a popup to upload a profile photo' do 
     find('#profile-photo').click
 
-    within 'div#profile-photo-modal' do 
-      attach_file 'profile_photo', '/Users/daviskoh/Desktop/bro.jpg'
-      click_button 'Submit'
+    within 'div#photo-modal' do 
+      attach_file 'photo', '/Users/daviskoh/Desktop/bro.jpg'
+      click_button 'Update Profile Photo'
     end
 
     expect(User.last.profile_photo).to_not be_nil

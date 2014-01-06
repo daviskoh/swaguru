@@ -11,6 +11,7 @@ var Router = Backbone.Router.extend({
 
     this.session = opts.session;
     this.user = opts.user;
+    this.collection = new UserPhotos();
 
     // $.ajax({
     //   url: "session",
@@ -81,12 +82,12 @@ var Router = Backbone.Router.extend({
 
         // SEPARATE USERSHOWPAGE INTO 2 SEPARATE VIEWS
 
-        $('body').append(new UserShowBottomView({model: self.user, collection: new UserPhotos()}).el);
+        $('body').append(new UserShowBottomView({model: self.user, collection: self.collection}).el);
 
         // responsible for profile phot changes
         // remains invisible until revealed
         if (sessionID) {
-          $('body').append((new PhotoModalView({model: self.user})).el);
+          $('body').append((new PhotoModalView({model: self.user, collection: self.collection})).el);
           // reinitialize foundation
           $(document).foundation();
           console.log('REINIT foundation');
