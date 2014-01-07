@@ -11,7 +11,6 @@ var Router = Backbone.Router.extend({
 
     this.session = opts.session;
     this.user = opts.user;
-    this.collection = new UserPhotos();
 
     // $.ajax({
     //   url: "session",
@@ -77,17 +76,19 @@ var Router = Backbone.Router.extend({
 
         response = arguments;
 
+        // SEPARATE USERSHOWPAGE INTO 2 SEPARATE VIEWS
         // populate this.user w/ user model w/ resp for rendering in usershowview
         this.loadView(new UserShowTopView({model: self.user}));
 
-        // SEPARATE USERSHOWPAGE INTO 2 SEPARATE VIEWS
+        var collection = new UserPhotos();
+        collection.url = '/api/users/' + id + '/photos';
 
-        $('body').append(new UserShowBottomView({model: self.user, collection: self.collection}).el);
+        $('body').append(new UserShowBottomView({model: self.user, collection: collection}).el);
 
         // responsible for profile phot changes
         // remains invisible until revealed
         if (sessionID) {
-          $('body').append((new PhotoModalView({model: self.user, collection: self.collection})).el);
+          $('body').append((new PhotoModalView({model: self.user, collection: collection})).el);
           // reinitialize foundation
           $(document).foundation();
           console.log('REINIT foundation');
