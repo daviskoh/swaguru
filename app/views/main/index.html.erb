@@ -27,8 +27,8 @@ put conditional rendering of nav items using javascript -->
     </section>
   </nav>
 </script>
-<!-- #Welcome page    ##########################################################-->
 
+<!-- #Welcome page    ##########################################################-->
 <script type='text/html' class='welcome'>
   <div class='rows'>
     <div class='large-8 large-centered columns text-center'>
@@ -48,43 +48,39 @@ put conditional rendering of nav items using javascript -->
 
 <!-- #Sign Up User Form  ######################################################### -->
 <script type='text/html' class='sign-up-form'>
-  <div class="rows">
-    <div class="large-6 large-centered columns text-center">
-      <h1>Create a New Account</h1>
+  <div class="large-6 large-centered columns text-center">
+    <h1>Create a New Account</h1>
 
-      <form class='new-user'>
-        <fieldset>
-          <input type="text" name="name" placeholder='Name'>
-          <input type="email" name='email' placeholder='Email'>
-          <input type="password" name='password' placeholder='Password'>
-          <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
+    <form class='new-user'>
+      <fieldset>
+        <input type="text" name="name" placeholder='Name'>
+        <input type="email" name='email' placeholder='Email'>
+        <input type="password" name='password' placeholder='Password'>
+        <input type="password" name='password_confirmation' placeholder='Password Confirmation'>
 
-          <select name="gender" id="" placeholder='Gender'>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          <button>Sign Up</button>
-        </fieldset>
-      </form>
-    </div>
+        <select name="gender" id="" placeholder='Gender'>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <button>Sign Up</button>
+      </fieldset>
+    </form>
   </div>
 </script>
 
 <!-- #Sign In User Form  ###########################################################  -->
 <script type='text/html' class='sign-in-form'>
-  <div class="rows">
-    <div class="large-6 large-centered columns text-center">
-      <h1>Sign In</h1>
+  <div class="large-6 large-centered columns text-center">
+    <h1>Sign In</h1>
 
-      <form class='sign-in'>
-        <fieldset>
-          <input type="email" name='email' placeholder='Email'>
-          <input type="password" name='password' placeholder='Password'>
-          <button>Sign In</button>
-        </fieldset>
-      </form>
-    </div>
+    <form class='sign-in'>
+      <fieldset>
+        <input type="email" name='email' placeholder='Email'>
+        <input type="password" name='password' placeholder='Password'>
+        <button>Sign In</button>
+      </fieldset>
+    </form>
   </div>
 </script>
 
@@ -106,54 +102,56 @@ put conditional rendering of nav items using javascript -->
 
 <!-- #Show User Page ########################################################### -->
 <script type='text/html' class='user-show-page-top'>
-  <div class="rows">
-    <div class="large-8 large-centered columns">
-      <div id='profile-photo-frame'>
-        <%% if (this.model.get('profile_photo_url') != null) { %>
-          <a data-reveal-id='photo-modal'>
-            <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
-          </a>
-        <%% } else { %>
-          <a href='' data-reveal-id='photo-modal'>
-            <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
-          </a>
-        <%% } %>
-      </div>
+  <div class="large-8 large-centered columns">
+    <div id='profile-photo-frame'>
+      <%% if (this.model.get('profile_photo_url') != null) { %>
+        <a data-reveal-id='photo-modal'>
+          <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
+        </a>
+      <%% } else { %>
+        <a href='' data-reveal-id='photo-modal'>
+          <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
+        </a>
+      <%% } %>
+    </div>
 
-      <div id='profile-name'>
-        <p>
-          <%%= this.model.get('name') %>
-        </p>
-      </div>
+    <div id='profile-name'>
+      <p>
+        <%%= this.model.get('name') %>
+      </p>
+    </div>
 
-      <div id='stats'>
-        <ul class='button-group'>
-          <li><a href="#" class='button'>Style Points</a></li>
-          <li><a href="#" class='button'>Followers</a></li>
-          <li><a href="#" class='button'>Following</a></li>
-        </ul>
-      </div>
+    <div id='stats'>
+      <ul class='button-group'>
+        <li><a href="#" class='button'>Style Points</a></li>
+        <li><a href="#" class='button'>Followers</a></li>
+        <li><a href="#" class='button'>Following</a></li>
+      </ul>
     </div>
   </div>
 </script>
 
 <script type='text/html' class='user-show-page-bottom'>
-  <div class="rows">
-    <div class="large-8 large-centered columns text-center">
-      <%% if (sessionID) { %>
-        <div id='user-actions'>
+  <div class="large-8 large-centered columns text-center">
+    <%% if (sessionID) { %>
+      <div class='rows'>
+        <div class='large-10 large-centered columns text-center'>
           <ul class='button-group'>
-            <li><a href="" class="button" id='upload-new-photo' data-reveal-id='photo-modal'>Picture New</a></li>
-            <li><a href="#" class="button">Blog New</a></li>
+            <li><a href="" class="button large" id='upload-new-photo' data-reveal-id='photo-modal'>Picture New</a></li>
+            <li><a href="#" class="button large">Blog New</a></li>
           </ul>
         </div>
-      <%% } %>
+      </div>
+    <%% } %>
 
-      <ul class='user-show-content'>
-        <%% _.each(this.collection.models, function(model){ %>
-          <li><img src='<%%= model.get('image_url') %>'></li>
-        <%% }) %>
-      </ul>  
+    <div class='rows'>
+      <div class='large-10 large-centered columns text-center'>
+        <ul class='user-show-content'>
+          <%% _.each(this.collection.models, function(model){ %>
+            <li><img src='<%%= model.get('image_url') %>'></li>
+          <%% }) %>
+        </ul>  
+      </div>
     </div>
-  </div>  
+  </div>
 </script>

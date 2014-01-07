@@ -1,6 +1,6 @@
 var UserShowTopView = Backbone.View.extend({
   tagName: 'div',
-  className: 'container1',
+  className: 'container1 rows',
 
   events: {
     'click a img': 'revealProfilePhotoModal'  

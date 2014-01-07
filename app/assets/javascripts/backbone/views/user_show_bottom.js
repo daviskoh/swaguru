@@ -1,6 +1,6 @@
 var UserShowBottomView = Backbone.View.extend({
   tagName: 'div',
-  className: 'container2',
+  className: 'container2 rows',
 
   events: {
     'click #upload-new-photo': 'revealPhotoModal'

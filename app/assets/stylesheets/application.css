@@ -27,3 +27,17 @@ div#profile-photo-frame img {
 img.photo-preview {
   width: 500px;
 }
+
+div {
+  /*uncomment to see divs*/
+  /*border: 2px solid green;*/
+}
+
+ul {
+  list-style: none;
+}
+
+div.reveal-modal {
+  min-height: 30%;
+  max-height: 50%;
+}
