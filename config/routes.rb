@@ -9,8 +9,6 @@ Swaguru::Application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :photos, only: [:index]
-
-    # resources :users_photos, only: [:create, :destroy, :index]
   end
 
   match '*path', to: 'main#index', via: :get

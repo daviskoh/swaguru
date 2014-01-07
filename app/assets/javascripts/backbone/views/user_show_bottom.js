@@ -29,7 +29,7 @@ var UserShowBottomView = Backbone.View.extend({
         _.each(arguments, function(ele) { console.log(ele) });
         self.render();
       }
-    });
+    }, {reset: true});
     console.log('this.collection.fetch() end');
 
     return this;

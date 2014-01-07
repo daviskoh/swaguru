@@ -11,20 +11,6 @@ var Router = Backbone.Router.extend({
 
     this.session = opts.session;
     this.user = opts.user;
-
-    // $.ajax({
-    //   url: "session",
-    //   type: "GET",
-    //   dataType: "json",
-    //   success: function(sessionJSON) {
-    //     console.log('retrieved session id');
-
-    //     sessionID = sessionJSON;
-
-    //     response = arguments;
-    //   },
-    //   context: this
-    // });
     
     this.loadNavigationView();
   },
