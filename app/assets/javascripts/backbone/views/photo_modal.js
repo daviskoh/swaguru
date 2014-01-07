@@ -1,6 +1,6 @@
 var PhotoModalView = Backbone.View.extend({
   tagName: 'div',
-  className: 'reveal-modal',
+  className: 'reveal-modal medium',
   id: 'photo-modal',
 
   events: {
@@ -53,6 +53,7 @@ var PhotoModalView = Backbone.View.extend({
           var img = $('<img>');
           console.log(img);
           img.attr('src', reader.result);
+          img.addClass('photo-preview');
 
           $('.preview-photo').append($('<h3>Photo Preview</h3>')).append(img);
         };
@@ -99,6 +100,7 @@ var PhotoModalView = Backbone.View.extend({
     console.log('UPLOADING new photo');
 
     // create new user's photo on client side
+    var self = this;
     photo = this.collection.create({user_id: this.model.get('id'), image: this.reader.result}, {
       success: function(model, resp, options) {
         console.log('new photo CREATE SUCCESS');
@@ -106,6 +108,8 @@ var PhotoModalView = Backbone.View.extend({
         _.each(arguments, function(element) {
           console.log(element);
         });
+
+        self.prependPhoto(model);
       },
       error: function(model, resp, options) {
         console.log('new photo CREATE ERROR');
@@ -114,10 +118,17 @@ var PhotoModalView = Backbone.View.extend({
           console.log(element);
         });
       }
-    });
+    }, {reset: false});
 
     this.clearModal();
     this.closePhotoModal();
+  },
+
+  prependPhoto: function(photo) {
+    var img = $('<img>');
+    img.attr('src', photo.get('image_url'));
+
+    $('ul.user-show-content').prepend(img);
   },
 
   closePhotoModal: function() {

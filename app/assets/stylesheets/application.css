@@ -22,5 +22,8 @@ div.container1 {
 
 div#profile-photo-frame img {
   width: 200px;
+}
 
+img.photo-preview {
+  width: 500px;
 }

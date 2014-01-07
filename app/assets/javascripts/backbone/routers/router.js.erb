@@ -38,18 +38,6 @@ var Router = Backbone.Router.extend({
     console.log('current user url: %s', this.user.get('url'));
     
     var self = this;
-    // console.log(self.user);
-
-    // self.user.set('id', id);
-
-    // self.user.fetch({
-    //   success: function() {
-    //     _.each(arguments, console.log);
-    //   },
-    //   error: function() {
-    //     _.each(arguments, console.log);
-    //   }
-    // });
 
     $.ajax({
       url: "/api/users/" + id,

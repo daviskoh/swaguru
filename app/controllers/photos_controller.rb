@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def show
     photo = Photo.find(params[:id])
     # binding.pry
-    render json: photo.as_json(method: :image_url), status: 200
+    render json: photo.as_json(methods: :image_url), status: 200
   end
 
   def create
