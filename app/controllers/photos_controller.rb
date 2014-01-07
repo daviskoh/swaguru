@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   def index
     photos = params[:user_id] ? set_user.photos : Photo.all
     # binding.pry
-    render json: photos.as_json(method: :image_url), status: 200
+    render json: photos.as_json(methods: :image_url), status: 200
   end
 
   def show
