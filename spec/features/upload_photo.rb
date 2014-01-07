@@ -14,6 +14,7 @@ describe 'upload photo button', js: true do
       click_button 'Upload Photo'
     end
 
+    sleep(5)
     expect(User.last).to have(1).photos
   end
 end
