@@ -17,9 +17,16 @@ var UserShowBottomView = Backbone.View.extend({
     this.listenTo(this.collection, 'change', this.render);
 
     console.log('fetching collection info');
-
-    console.log(this.collection[0]);
-
+    this.collection.fetch({
+      success: function(collection, resp, opts) {
+        console.log('FETCH SUCCESS');
+        _.each(arguments, function(ele) { console.log(ele) });
+      },
+      error: function(collection, resp, opts) {
+        console.log('FETCH ERROR');
+        _.each(arguments, function(ele) { console.log(ele) });
+      }
+    });
     console.log('this.collection.fetch() end');
 
     this.render();

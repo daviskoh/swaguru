@@ -2,26 +2,26 @@ class PhotosController < ApplicationController
   before_action :authenticated!, :set_user, :authorized!, except: [:show, :index]
 
   def index
-    @photos = Photo.all
-    binding.pry
-    render json: @photos.as_json(method: :image_url), status: 200
+    photos = params[:user_id] ? set_user.photos : Photo.all
+    # binding.pry
+    render json: photos.as_json(method: :image_url), status: 200
   end
 
   def show
-    @photo = Photo.find(params[:id])
-    binding.pry
-    render json: @photo.as_json(method: :image_url), status: 200
+    photo = Photo.find(params[:id])
+    # binding.pry
+    render json: photo.as_json(method: :image_url), status: 200
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    photo = Photo.new(photo_params)
 
-    if @photo.save
+    if photo.save
       # binding.pry
-      render json: @photo.as_json(methods: :image_url), status: 200
+      render json: photo.as_json(methods: :image_url), status: 200
     else
       # binding.pry
-      render json: @photo.errors, status: :unprocessable_entity
+      render json: photo.errors, status: :unprocessable_entity
     end
   end
 

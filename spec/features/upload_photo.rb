@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'upload photo button', js: true do 
   before :each do 
     user_login
+    User.last.photos.destroy_all
   end
 
   it 'provides a popup to upload a new photo' do 

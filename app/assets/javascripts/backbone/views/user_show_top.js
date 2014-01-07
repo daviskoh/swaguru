@@ -37,7 +37,7 @@ var UserShowTopView = Backbone.View.extend({
       $(modal.children('button')[0]).show();
 
       modal.foundation('reveal', 'open');
-    { else {
+    } else {
       console.log('NOT authorized to upload photo');
     }
   },
