@@ -1,0 +1,39 @@
+input.error { border: 2px solid red; }
+
+div.container1 {
+  margin-top: 5%;
+}
+
+div#profile-photo-frame img {
+  width: 200px;
+}
+
+img.photo-preview {
+  width: 500px;
+}
+
+div {
+  /*uncomment to see divs*/
+  /*border: 2px solid green;*/
+}
+
+ul.user-show-content {
+  list-style: none;
+  padding: 5%;
+  border: 2px solid grey;
+}
+
+a.delete {
+  &:hover {
+    color: red;
+  }
+}
+
+li.photo {
+  margin: 5%;
+}
+
+div.reveal-modal {
+  min-height: 30%;
+  max-height: 50%;
+}

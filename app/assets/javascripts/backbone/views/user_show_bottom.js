@@ -3,7 +3,8 @@ var UserShowBottomView = Backbone.View.extend({
   className: 'container2 rows',
 
   events: {
-    'click #upload-new-photo': 'revealPhotoModal'
+    'click #upload-new-photo': 'revealPhotoModal',
+    'click a.delete': 'deletePhoto'
   },
 
   template: _.template($("script.user-show-page-bottom[type='text/html']").html()),
@@ -14,6 +15,7 @@ var UserShowBottomView = Backbone.View.extend({
     this.model = opts.model;
 
     this.collection = opts.collection;
+    this.listenTo(this.collection, 'destroy', this.removePhoto);
 
     console.log('fetching collection info');
     var self = this;
@@ -53,16 +55,30 @@ var UserShowBottomView = Backbone.View.extend({
     }
   },
 
-  // prependPhoto: function() {
-  //   var last = this.collection.last();
+  deletePhoto: function(e) {
+    console.log('DELETING photo');
 
-  //   var img = $('<img>');
-  //   img.attr('src', last.get('image_url'));
+    var id = parseInt($(e.toElement).parent().attr('id'));
+    var model = this.collection.get(id);
 
-  //   this.$el.find('ul.user-show-content').prepend(img);
-    
-  //   this.stopListening(this.collection, 'add');
-  // },
+    console.log('MODEL');
+    console.log(model);
+
+    model.destroy({
+      success: function(model, resp, opts) {
+        console.log('photo delete SUCCESS');
+        response = arguments;
+      },
+      error: function() {
+        console.log('photo delete ERROR');
+        response = arguments;
+      }
+    });
+  },
+
+  removePhoto: function(photoObject) {
+    this.$el.find('ul.user-show-content').find('li#' + photoObject.get('id')).remove();
+  },
 
   render: function() {
     this.$el.html(this.template());

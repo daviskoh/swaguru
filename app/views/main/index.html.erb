@@ -147,8 +147,13 @@ put conditional rendering of nav items using javascript -->
     <div class='rows'>
       <div class='large-10 large-centered columns text-center'>
         <ul class='user-show-content'>
+          <%% var self = this %>
           <%% _.each(this.collection.models, function(model){ %>
-            <li class='photo'><img src='<%%= model.get('image_url') %>'></li>
+            <li class='photo' id='<%%= model.get('id') %>'><img src='<%%= model.get('image_url') %>'>
+              <%% if (self.model.get('id') === sessionID) { %>
+                <a class='delete'>Delete</a>
+              <%% } %>
+            </li>
           <%% }) %>
         </ul>  
       </div>

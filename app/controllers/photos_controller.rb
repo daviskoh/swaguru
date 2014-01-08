@@ -25,6 +25,17 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    photo = Photo.find(params[:id])
+
+    if photo.destroy
+      binding.pry
+      render json: photo, status: 200
+    else
+      render status: 500
+    end
+  end
+
   private
 
   def photo_params
