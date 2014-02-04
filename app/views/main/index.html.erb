@@ -11,12 +11,19 @@
 put conditional rendering of nav items using javascript -->
 <script type='text/html' class='navigation'>
   <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#" id='main-logo'><span class='logo'>Swagu.ru</span></a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
     <section class="top-bar-section">
       <ul class="right">
-        <li><a href="" id='home-nav'>Home</a></li>
+        <li><a href="" id='home-nav'><i class='fi-home'></i> Home</a></li>
 
         <%% if (sessionID) { %>
-          <li><a href="" id="user-show-nav">Profile</a></li>
+          <li><a href="" id="user-show-nav"><i class='fi-torso'></i> Profile</a></li>
           <li><a href="" id='sign-out-nav'>Sign Out</a></li>
         <%% } else { %>
           <li><a href="" id='sign-up-nav'>Sign Up</a></li>
@@ -32,7 +39,7 @@ put conditional rendering of nav items using javascript -->
 <script type='text/html' class='welcome'>
   <div class='rows'>
     <div class='large-8 large-centered columns text-center'>
-      <h1>Welcome to Swagu.ru</h1>
+      <h1>Welcome to <span class='logo'>Swagu.ru</span></h1>
 
 
     </div>
@@ -41,7 +48,7 @@ put conditional rendering of nav items using javascript -->
   <div class='rows'>
     <div class='large-4 large-centered columns text-center'>
       <a href="#" class='large button' id='sign-up-button'>Sign Up</a>
-      <a href="#" class='large button' id='sign-in-button'>Sign In</a>
+      <a href="#" class='large button' id='sign-in-button'>Log In</a>
     </div>
   </div>  
 </script>
@@ -103,15 +110,13 @@ put conditional rendering of nav items using javascript -->
 <!-- #Show User Page ########################################################### -->
 <script type='text/html' class='user-show-page-top'>
   <div class="large-8 large-centered columns">
-    <div id='profile-photo-frame'>
-      <a data-reveal-id='photo-modal'>
-        <%% if (this.model.get('profile_photo_url') != null) { %>
-          <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
-        <%% } else { %>
-          <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
-        <%% } %>
-      </a>
-    </div>
+    <a data-reveal-id='photo-modal'>
+      <%% if (this.model.get('profile_photo_url') != null) { %>
+        <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
+      <%% } else { %>
+        <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
+      <%% } %>
+    </a>
 
     <div id='profile-name'>
       <p>
@@ -119,12 +124,14 @@ put conditional rendering of nav items using javascript -->
       </p>
     </div>
 
-    <div id='stats'>
-      <ul class='button-group'>
-        <li><a href="#" class='button'>Style Points</a></li>
-        <li><a href="#" class='button'>Followers</a></li>
-        <li><a href="#" class='button'>Following</a></li>
-      </ul>
+    <div id='stats row'>
+      <div class='small-8 small-centered columns'>
+        <ul class='button-group even-3'>
+          <li><a href="#" class='button small'>Style Points</a></li>
+          <li><a href="#" class='button small'>Followers</a></li>
+          <li><a href="#" class='button small'>Following</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </script>
@@ -134,9 +141,9 @@ put conditional rendering of nav items using javascript -->
     <%% if (sessionID) { %>
       <div class='rows'>
         <div class='large-10 large-centered columns text-center'>
-          <ul class='button-group'>
-            <li><a href="" class="button large" id='upload-new-photo' data-reveal-id='photo-modal'>Picture New</a></li>
-            <li><a href="#" class="button large">Blog New</a></li>
+          <ul class='button-group even-2'>
+            <li><a href="" class="button large" id='upload-new-photo' data-reveal-id='photo-modal'><i class='fi-photo'></i> Photo</a></li>
+            <li><a href="#" class="button large"><i class='fi-pencil'></i> Post</a></li>
           </ul>
         </div>
       </div>
@@ -149,7 +156,7 @@ put conditional rendering of nav items using javascript -->
           <%% _.each(this.collection.models, function(model){ %>
             <li class='photo' id='<%%= model.get('id') %>'><img src='<%%= model.get('image_url') %>'>
               <%% if (self.model.get('id') === sessionID) { %>
-                <a class='delete'>Delete</a>
+                <a class='delete'><i class='fi-trash'></i> Delete</a>
               <%% } %>
             </li>
           <%% }) %>

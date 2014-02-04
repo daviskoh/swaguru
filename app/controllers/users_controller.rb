@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     #TODO also unset password on client side
     #TODO change to user_params, NOT passing through PASSWORD
     @user = User.new(user_params)
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       # redirect_to user_path(@user)
       render json: @user.as_json(methods: :profile_photo_url), status: 200
     else
-      binding.pry
+      # binding.pry
       # render :edit
       render status: :unprocessable_entity
     end

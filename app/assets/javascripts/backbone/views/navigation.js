@@ -3,6 +3,7 @@ var NavigationView = Backbone.View.extend({
   className: 'fixed',
 
   events: {
+    'click a#main-logo': 'goToHome',
     'click a#home-nav': 'goToHome',
     'click a#user-show-nav': 'profile',
     'click a#sign-up-nav': 'goToSignUp',

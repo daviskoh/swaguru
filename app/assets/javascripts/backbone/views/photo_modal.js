@@ -125,10 +125,12 @@ var PhotoModalView = Backbone.View.extend({
   },
 
   prependPhoto: function(photo) {
+    var li = $("<li class='photo' id='" + photo.get('id') + "''></li>");
     var img = $('<img>');
     img.attr('src', photo.get('image_url'));
+    li.append(img).append($("<a class='delete'><i class='fi-trash'></i> Delete</a>"));
 
-    $('ul.user-show-content').prepend(img);
+    $('ul.user-show-content').prepend(li);
   },
 
   closePhotoModal: function() {

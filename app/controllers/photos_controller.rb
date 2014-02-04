@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
 
     if photo.destroy
-      binding.pry
+      # binding.pry
       render json: photo, status: 200
     else
       render status: 500

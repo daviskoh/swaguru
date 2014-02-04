@@ -40,7 +40,7 @@ gem 'pg'
 
 # CSS Framework
 gem 'foundation-rails'
-# gem 'zurb-foundation'
+gem 'foundation-icons-sass-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

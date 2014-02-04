@@ -1,3 +1,10 @@
+$border: 2px solid darken(white, 20%);
+@mixin box-shadow {
+  -moz-box-shadow: 1px 1px 3px 2px #8c8c8c;
+  -webkit-box-shadow: 1px 1px 5px 3px #8c8c8c;
+  box-shadow: 1px 1px 3px 3px #8c8c8c;
+}
+
 input.error { border: 2px solid red; }
 
 div.container1 {
@@ -12,6 +19,13 @@ img.photo-preview {
   width: 500px;
 }
 
+img#profile-photo {
+  height: 150px;
+  width: auto;
+  border: $border;
+  margin: 0px;
+}
+
 div {
   /*uncomment to see divs*/
   /*border: 2px solid green;*/
@@ -20,10 +34,17 @@ div {
 ul.user-show-content {
   list-style: none;
   padding: 5%;
-  border: 2px solid grey;
+  margin-right: 2.4%;
+  margin-bottom: 0px;
+  border: $border;
+  border-bottom: none;
+  min-height: 600px;
 }
 
 a.delete {
+  float: left;
+  margin-left: 45%;
+
   &:hover {
     color: red;
   }
@@ -31,5 +52,22 @@ a.delete {
 
 li.photo {
   margin: 5%;
+  @include box-shadow;
 }
 
+.button-left {
+  
+}
+
+.button-right {
+  
+}
+
+.button.large {
+  border: 3px solid darken(white, 20%);
+}
+
+span.logo {
+  font-family: Tangerine;
+  font-size: 2em;
+}
