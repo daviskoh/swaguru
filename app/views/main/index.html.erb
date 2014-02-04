@@ -19,14 +19,35 @@ put conditional rendering of nav items using javascript -->
     </ul>
 
     <section class="top-bar-section">
+      <ul class='left'>
+        <li class="divider"></li>
+        <li><a href="" id='browse'>Browse</a></li>
+        <li class="divider"></li>
+
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-9 small-9 columns">
+              <input type="text" placeholder="Search">
+            </div>
+            <div class="large-3 small-3 columns">
+              <a href="#" class="alert button expand"><i class='fi-magnifying-glass'></i></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
       <ul class="right">
+        <li class="divider"></li>
         <li><a href="" id='home-nav'><i class='fi-home'></i> Home</a></li>
+        <li class="divider"></li>
 
         <%% if (sessionID) { %>
           <li><a href="" id="user-show-nav"><i class='fi-torso'></i> Profile</a></li>
+          <li class="divider"></li>
           <li><a href="" id='sign-out-nav'>Sign Out</a></li>
         <%% } else { %>
           <li><a href="" id='sign-up-nav'>Sign Up</a></li>
+          <li class="divider"></li>
           <li><a href="" id='sign-in-nav'>Sign In</a></li>
         <%% } %>
 

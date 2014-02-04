@@ -4,6 +4,7 @@ var NavigationView = Backbone.View.extend({
 
   events: {
     'click a#main-logo': 'goToHome',
+    'click a#browse': 'goToPhotoIndex',
     'click a#home-nav': 'goToHome',
     'click a#user-show-nav': 'profile',
     'click a#sign-up-nav': 'goToSignUp',
@@ -20,6 +21,12 @@ var NavigationView = Backbone.View.extend({
 
     this.render();
     return this;
+  },
+
+  goToPhotoIndex: function(e) {
+    e.preventDefault();
+
+    console.log('going to Photo Index');
   },
 
   goToHome: function(e) { 
