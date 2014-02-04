@@ -43,6 +43,8 @@ var UserShowTopView = Backbone.View.extend({
   },
 
   render: function() {
+    datModel = this.model;
+    console.log(this.model.get('profile_photo_url'));
     this.$el.html(this.template());
   }
 });

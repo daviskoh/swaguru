@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   respond_to :json#, :html
 
   def show
-    #TODO separate user show page into 2 view NOT 1
-    #TODO check if through backbone/js can make request for user info
     # binding.pry
     if @user.profile_photo_file_name
       render json: @user.as_json(methods: [:profile_photo_url, :photos]), status: 201
@@ -16,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     #TODO also unset password on client side
     #TODO change to user_params, NOT passing through PASSWORD
     @user = User.new(user_params)

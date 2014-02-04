@@ -31,6 +31,7 @@ var NewUserFormView = Backbone.View.extend({
 
   createUser: function(e) {
     e.preventDefault();
+    this.model.clear();
 
     // make sure user CANT hit submit more than once
     // make sure user is not ALREADY created
@@ -68,8 +69,7 @@ var NewUserFormView = Backbone.View.extend({
         // document.location.href = '/';
         console.log(resp);
 
-        // self.model.unset('password');
-        // self.model.unset('password_confirmation');
+        response = arguments;
 
         Backbone.history.navigate('session/new', {trigger: true});
       },

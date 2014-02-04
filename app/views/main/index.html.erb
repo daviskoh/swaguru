@@ -104,15 +104,13 @@ put conditional rendering of nav items using javascript -->
 <script type='text/html' class='user-show-page-top'>
   <div class="large-8 large-centered columns">
     <div id='profile-photo-frame'>
-      <%% if (this.model.get('profile_photo_url') != null) { %>
-        <a data-reveal-id='photo-modal'>
+      <a data-reveal-id='photo-modal'>
+        <%% if (this.model.get('profile_photo_url') != null) { %>
           <img src="<%%= this.model.get('profile_photo_url') %>" id='profile-photo' alt="">
-        </a>
-      <%% } else { %>
-        <a href='' data-reveal-id='photo-modal'>
+        <%% } else { %>
           <img src='http://placekitten.com/200/300' id='profile-photo' alt=''>
-        </a>
-      <%% } %>
+        <%% } %>
+      </a>
     </div>
 
     <div id='profile-name'>
