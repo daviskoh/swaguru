@@ -25,6 +25,7 @@ var PhotoModalView = Backbone.View.extend({
 
   readProfilePhoto: function() {
     console.log('readProfilePhoto method call');
+    $('.preview-photo').empty();
 
     var fileInput = $('#fileInput')[0];
     console.log(fileInput);
