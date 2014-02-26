@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-12-18T18:07:49-05:00">2013-12-18T18:07:49-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-02-26T18:46:28-05:00">2014-02-26T18:46:28-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">85.71%</span></span>
+    (<span class="covered_percent"><span class="yellow">90.0%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.9
+       <span class="green">
+         1.52
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>1</b> files in total.
-    <b>7</b> relevant lines. 
-    <span class="green"><b>6</b> lines covered</span> and
-    <span class="red"><b>1</b> lines missed </span>
+    <b>3</b> files in total.
+    <b>20</b> relevant lines. 
+    <span class="green"><b>18</b> lines covered</span> and
+    <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -51,13 +51,33 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#61432fe98ecf6095d396f516a11339536b14c290" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="yellow strong">85.71 %</td>
-        <td>13</td>
+        <td class="strong"><a href="#4272f5e8c0ffb5c6f6cc2327a244b5803c4fd856" class="src_link" title="app/models/photo.rb">app/models/photo.rb</a></td>
+        <td class="red strong">75.0 %</td>
         <td>7</td>
-        <td>6</td>
+        <td>4</td>
+        <td>3</td>
+        <td>1</td>
+        <td>0.8</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#61432fe98ecf6095d396f516a11339536b14c290" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
+        <td class="yellow strong">87.5 %</td>
+        <td>15</td>
+        <td>8</td>
+        <td>7</td>
         <td>1</td>
         <td>0.9</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#b4d694612dd4730916c0c767c57bdde70f82a2f5" class="src_link" title="spec/models/user_spec.rb">spec/models/user_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>22</td>
+        <td>8</td>
+        <td>8</td>
+        <td>0</td>
+        <td>2.5</td>
       </tr>
       
     </tbody>
@@ -76,13 +96,73 @@
     
       <div class="source_files">
       
+        <div class="source_table" id="4272f5e8c0ffb5c6f6cc2327a244b5803c4fd856">
+  <div class="header">
+    <h3>app/models/photo.rb</h3>
+    <h4><span class="red">75.0 %</span> covered</h4>
+    <div>
+      <b>4</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class Photo &lt; ActiveRecord::Base</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  has_attached_file :image</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def image_url</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
+          
+          <code class="ruby">    image.url</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">  end  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="61432fe98ecf6095d396f516a11339536b14c290">
   <div class="header">
     <h3>app/models/user.rb</h3>
-    <h4><span class="yellow">85.71 %</span> covered</h4>
+    <h4><span class="yellow">87.5 %</span> covered</h4>
     <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>8</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
   </div>
@@ -135,7 +215,7 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">  has_secure_password</code>
+          <code class="ruby">  has_many :photos</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
@@ -147,22 +227,184 @@
         <li class="covered" data-hits="1" data-linenumber="10">
           <span class="hits">1</span>
           
+          <code class="ruby">  has_secure_password</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def profile_photo_url</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="11">
+        <li class="missed" data-hits="0" data-linenumber="13">
           
           
           <code class="ruby">    profile_photo.url</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby">  end</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="b4d694612dd4730916c0c767c57bdde70f82a2f5">
+  <div class="header">
+    <h3>spec/models/user_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>8</b> relevant lines. 
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;spec_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">describe User do </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby">  # let(:user) { FactoryGirl.create :user }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  before :each do</code>
+        </li>
+      
+        <li class="covered" data-hits="5" data-linenumber="6">
+          <span class="hits">5</span>
+          
+          <code class="ruby">    User.create(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">      name: &quot;Bob&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">      email: &quot;bob@bob.com&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">      password: &quot;bob&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">      password_confirmation: &quot;bob&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">      gender: &#39;male&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby">    )</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  describe &quot;validations&quot; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    [:name, :email, :password, :gender].each do |attribute|</code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="17">
+          <span class="hits">8</span>
+          
+          <code class="ruby">      it { should validate_presence_of attribute }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="20">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    it { should validate_uniqueness_of :email }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">  end  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby">end</code>

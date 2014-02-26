@@ -22,7 +22,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'launchy'
-  # gem 'simplecov', require: false
+  gem 'simplecov', require: false
 end
 
 # The greatest gem known to mankind
