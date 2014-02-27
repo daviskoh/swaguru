@@ -52,5 +52,5 @@ def user_login
     fill_in :password, with: "Bob"
   end
 
-  click_button 'Sign In'
+  click_button 'Log In'
 end
