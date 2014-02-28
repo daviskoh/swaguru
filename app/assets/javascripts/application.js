@@ -12,7 +12,6 @@
 //
 //= require jquery
 // require jquery_ujs
-//= require foundation
 //= require turbolinks
 //= require underscore
 // require sinon
@@ -21,6 +20,7 @@
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views
 //= require_tree ./backbone/routers
+//= require foundation
 
 $(function(){
 

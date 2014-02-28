@@ -2,6 +2,11 @@ var PhotoModalView = Backbone.View.extend({
   tagName: 'div',
   className: 'reveal-modal medium',
   id: 'photo-modal',
+  // el: '#photo-modal',
+
+  attributes: {
+    'data-reveal': ''
+  },
 
   events: {
     'change #fileInput': 'readProfilePhoto',
@@ -149,6 +154,9 @@ var PhotoModalView = Backbone.View.extend({
   },
 
   render: function() {
+    console.log("SCRIPT TAG BELOW");
+    console.log($("script.photo-upload[type='text/html']").html());
     this.$el.html(this.template());
   }
 });
+
