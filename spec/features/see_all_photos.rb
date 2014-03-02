@@ -3,7 +3,8 @@ require 'spec_helper'
 describe 'user can see all posted photos', js: true do 
   before :each do
     # vist /
-    # click browse button    
+    # click browse button
+    # no need to login
   end
 
   it "displays all other users' photos" do
